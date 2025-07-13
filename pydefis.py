@@ -7,7 +7,6 @@ import os.path
 import datetime
 from locale import setlocale, LC_TIME
 import json
-from unittest import TextTestRunner
 import requests
 from math import dist, sqrt
 from time import sleep
