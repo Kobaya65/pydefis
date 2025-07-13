@@ -13,6 +13,9 @@ from time import sleep
 from operator import itemgetter
 import unicodedata
 
+from PIL import Image
+
+
 
 def lion_nemme() -> str:
     """https://pydefis.callicode.fr/defis/Herculito01Lion/txt
@@ -1266,8 +1269,6 @@ def le_jour_de_la_serviette() -> None:
 
 def compter_les_etoiles_chaudes() -> None:
     """https://pydefis.callicode.fr/defis/C23_CompteEtoiles/txt"""
-    from PIL import Image
-
     # open image
     img = Image.open('./compter_les_etoiles_chaudes/ciel.png')
     rgb_img = img.convert('RGB')
@@ -1305,8 +1306,6 @@ def l_enregistreur_cache_1() -> None:
 
 def portrait_colore() -> None:
     """https://pydefis.callicode.fr/defis/LePortraitColore/txt"""
-    from PIL import Image
-
     fichier = "./portrait_colore/portrait.png"
     # charger l'image
     image = Image.open(fichier)
@@ -1495,8 +1494,6 @@ def photo_de_vacances() -> None:
 
 def les_oiseaux_du_lac_de_stymphale() -> None:
     """https://pydefis.callicode.fr/defis/Herculito06Oiseaux/txt"""
-    from PIL import Image
-
     fichier = "./les_oiseaux_du_lac_de_stymphale/lake.png"
     # charger l'image
     image = Image.open(fichier)
@@ -1844,7 +1841,9 @@ def bombe_a_desamorcer() -> None:
 
 
 def la_chambre_des_pairs() -> None:
-    """https://pydefis.callicode.fr/defis/ChambrePairs/txt"""
+    """https://pydefis.callicode.fr/defis/ChambrePairs/txt
+    2025-07-13 non résolu
+    """
     alpha_austin = {
         "A": 0,
         "B": 1,
@@ -1876,16 +1875,16 @@ def la_chambre_des_pairs() -> None:
     with open(file="./la_chambre_des_pairs/texte.txt", mode="r", encoding="utf-8") as f:
         texte = f.read()
 
-    dates = re.findall("(\d+(PLUS|MOINS)\d+)", texte)
+    dates = re.findall(f"AUSTINPOWERSN.+LE\d{2}(PLUS|MOINS)\d{2}AUMOIS\d{2}(PLUS|MOINS)\d{2}EN\d{4}(PLUS|MOINS)\d{2}ANNEES", texte)
 
     sequences = []
     sequence = ""
-    idx_dates = idx_texte = 0
     for dat in dates:
         pos = texte.find(dat[0])
         for idx in range(idx_texte, pos):
             if texte[idx] in string.digits:
-                sequences.append(sequence)
+                if sequence not in ("MOISAUSEINUNEMATERNELLE", "OURSAUSEINUNEMATERNELLE"):
+                    sequences.append(sequence)
                 sequence = ""
             elif int(alpha_austin[texte[idx]]) % 2 == 0:
                 sequence += texte[idx]
@@ -1906,5 +1905,56 @@ def la_chambre_des_pairs() -> None:
             print(f"Plus longue séquence = {seq}")
 
 
+def les_ecailles_du_dragon() -> None:
+    """https://pydefis.callicode.fr/defis/C22_Dungeons/txt"""
+    fichier = "./les_ecailles_du_dragon/dungeons_portal_enc.png"
+    # charger l'image
+    image = Image.open(fichier)
+    pixels = image.load()
+    largeur, hauteur = image.size
+    n = 10000
+
+    for y in range(hauteur):
+        for x in range(largeur):
+            val = pixels[x, y]
+            # niveau de gris inférieur à 128) ((x^3 + y^7) xor n) % 256
+            if val < 128:
+                pixels[x, y] = ((x**3 + y**7) ^ n) % 256
+            else:
+                pixels[x, y] = random.randint(0, 255)
+
+    image.save("./les_ecailles_du_dragon/dungeons_portal_decoded_10000.png")
+
+    print("Fin")
+
+def carte_du_marauder():
+    """https://pydefis.callicode.fr/defis/MaraudeurConfusio/txt"""
+    fichier = "./carte_du_marauder/maraudeur_cr.png"
+    cible = "./carte_du_marauder/maraudeur_cr.png"
+    # charger l'image
+    image_fichier = Image.open(fichier)
+    pixels_fichier = image_fichier.load()
+    hauteur, largeur = image_fichier.size
+
+    image_cible = Image.open(cible)
+    pixels_cible = image_cible.load()
+
+    a = 53911
+    b = 15677
+    n = largeur * hauteur
+    # (a * i + b) % n
+    for x in range(hauteur):
+        for y in range(largeur):
+            no_pixel = x * (y * largeur)
+            new_pos = (a * no_pixel + b) % n
+            new_x = new_pos % largeur
+            new_y = new_pos % hauteur
+            # source color is mode RGBA, so ignore last value (canal alpha)
+            pixels_cible[new_x, new_y] = pixels_fichier[x, y][:3]
+
+    image_cible.save("./carte_du_marauder/maraudeur_decrypte.png")
+    print("Fin.")
+
+
 if __name__ == "__main__":
-    la_chambre_des_pairs()
+    carte_du_marauder()
