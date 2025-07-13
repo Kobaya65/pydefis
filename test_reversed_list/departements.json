@@ -1,0 +1,1143 @@
+{
+    "01": {
+        "Département": "Ain",
+        "Préfecture": "Bourg-en-Bresse",
+        "Sous-Préfecture": [
+            "Belley",
+            "Gex",
+            "Nantua"
+        ],
+        "Date de création": 1790,
+        "Population": 657856,
+        "Superficie": 5762.4
+    },
+    "02": {
+        "Département": "Aisne",
+        "Préfecture": "Laon",
+        "Sous-Préfecture": [
+            "Château-Thierry",
+            "Saint-Quentin",
+            "Soissons",
+            "Vervins"
+        ],
+        "Date de création": 1790,
+        "Population": 529374,
+        "Superficie": 7361.7
+    },
+    "03": {
+        "Département": "Allier",
+        "Préfecture": "Moulins",
+        "Sous-Préfecture": [
+            "Montluçon",
+            "Vichy"
+        ],
+        "Date de création": 1790,
+        "Population": 335628,
+        "Superficie": 7340.1
+    },
+    "04": {
+        "Département": "Alpes-de-Haute-Provence",
+        "Préfecture": "Digne-les-Bains",
+        "Sous-Préfecture": [
+            "Barcelonnette",
+            "Castellane",
+            "Digne-les-Bains",
+            "Forcalquier"
+        ],
+        "Date de création": 1790,
+        "Population": 165451,
+        "Superficie": 6925.2
+    },
+    "05": {
+        "Département": "Hautes-Alpes",
+        "Préfecture": "Gap",
+        "Sous-Préfecture": [
+            "Briançon"
+        ],
+        "Date de création": 1790,
+        "Population": 140605,
+        "Superficie": 5548.7
+    },
+    "06": {
+        "Département": "Nice",
+        "Préfecture": "Alpes-Maritime",
+        "Sous-Préfecture": [
+            "Grasse"
+        ],
+        "Date de création": 1860,
+        "Population": 1097410,
+        "Superficie": 4298.6
+    },
+    "07": {
+        "Département": "Privas",
+        "Préfecture": "Ardèche",
+        "Sous-Préfecture": [
+            "Largentière",
+            "Tournon-sur-Rhône"
+        ],
+        "Date de création": 1790,
+        "Population": 329325,
+        "Superficie": 5528.6
+    },
+    "08": {
+        "Département": "Ardennes",
+        "Préfecture": "Charleville-Mézières",
+        "Sous-Préfecture": [
+            "Rethel",
+            "Sedan",
+            "Vouziers"
+        ],
+        "Date de création": 1790,
+        "Population": 269701,
+        "Superficie": 5229.4
+    },
+    "09": {
+        "Département": "Ariège",
+        "Préfecture": "Foix",
+        "Sous-Préfecture": [
+            "Pamiers",
+            "Saint-Girons"
+        ],
+        "Date de création": 1790,
+        "Population": 153954,
+        "Superficie": 4889.9
+    },
+    "10": {
+        "Département": "Aube",
+        "Préfecture": "Troyes",
+        "Sous-Préfecture": [
+            "Bar-sur-Aube",
+            "Nogent-sur-Seine"
+        ],
+        "Date de création": 1790,
+        "Population": 311435,
+        "Superficie": 6004.2
+    },
+    "11": {
+        "Département": "Aude",
+        "Préfecture": "Carcassonne",
+        "Sous-Préfecture": [
+            "Limoux",
+            "Narbonne"
+        ],
+        "Date de création": 1790,
+        "Population": 375217,
+        "Superficie": 6139
+    },
+    "12": {
+        "Département": "Aveyron",
+        "Préfecture": "Rodez",
+        "Sous-Préfecture": [
+            "Millau",
+            "Villefranche-de-Rouergue"
+        ],
+        "Date de création": 1790,
+        "Population": 279554,
+        "Superficie": 8735.1
+    },
+    "13": {
+        "Département": "Bouches-du-Rhône",
+        "Préfecture": "Marseille",
+        "Sous-Préfecture": [
+            "Aix-en-Provence",
+            "Arles",
+            "Istres"
+        ],
+        "Date de création": 1790,
+        "Population": 2048070,
+        "Superficie": 5087.5
+    },
+    "14": {
+        "Département": "Calvados",
+        "Préfecture": "Caen",
+        "Sous-Préfecture": [
+            "Bayeux",
+            "Lisieux",
+            "Vire"
+        ],
+        "Date de création": 1790,
+        "Population": 697547,
+        "Superficie": 5534.5
+    },
+    "15": {
+        "Département": "Cantal",
+        "Préfecture": "Aurillac",
+        "Sous-Préfecture": [
+            "Mauriac",
+            "Saint-Flour"
+        ],
+        "Date de création": 1790,
+        "Population": 144379,
+        "Superficie": 5726
+    },
+    "16": {
+        "Département": "Charente",
+        "Préfecture": "Angoulême",
+        "Sous-Préfecture": [
+            "Cognac",
+            "Confolens"
+        ],
+        "Date de création": 1790,
+        "Population": 351718,
+        "Superficie": 5956
+    },
+    "17": {
+        "Département": "Charente-Maritime",
+        "Préfecture": "La Rochelle",
+        "Sous-Préfecture": [
+            "Jonzac",
+            "Rochefort",
+            "Saintes",
+            "Saint-Jean-d\"Angély"
+        ],
+        "Date de création": 1790,
+        "Population": 655709,
+        "Superficie": 6863.8
+    },
+    "18": {
+        "Département": "Cher",
+        "Préfecture": "Bourges",
+        "Sous-Préfecture": [
+            "Saint-Amand-Montrond",
+            "Vierzon"
+        ],
+        "Date de création": 1790,
+        "Population": 300933,
+        "Superficie": 7235
+    },
+    "19": {
+        "Département": "Corrèze",
+        "Préfecture": "Tulle",
+        "Sous-Préfecture": [
+            "Brive-la-Gaillarde",
+            "Ussel"
+        ],
+        "Date de création": 1790,
+        "Population": 239190,
+        "Superficie": 5856.8
+    },
+    "2A": {
+        "Département": "Corse-du-Sud",
+        "Préfecture": "Ajaccio",
+        "Sous-Préfecture": [
+            "Sartène"
+        ],
+        "Date de création": 1976,
+        "Population": 160814,
+        "Superficie": 4014.2
+    },
+    "2B": {
+        "Département": "Haute-Corse",
+        "Préfecture": "Bastia",
+        "Sous-Préfecture": [
+            "Corte",
+            "Calvi"
+        ],
+        "Date de création": 1976,
+        "Population": 182887,
+        "Superficie": 4665.6
+    },
+    "21": {
+        "Département": "Côte-d\"or",
+        "Préfecture": "Dijon",
+        "Sous-Préfecture": [
+            "Beaune",
+            "Montbard"
+        ],
+        "Date de création": 1790,
+        "Population": 535078,
+        "Superficie": 8763.2
+    },
+    "22": {
+        "Département": "Côtes-d\"Armor",
+        "Préfecture": "Saint-Brieuc",
+        "Sous-Préfecture": [
+            "Dinan",
+            "Guingamp",
+            "Lannion"
+        ],
+        "Date de création": 1790,
+        "Population": 603640,
+        "Superficie": 6877.6
+    },
+    "23": {
+        "Département": "Creuse",
+        "Préfecture": "Guéret",
+        "Sous-Préfecture": [
+            "Aubusson"
+        ],
+        "Date de création": 1790,
+        "Population": 115995,
+        "Superficie": 5565.4
+    },
+    "24": {
+        "Département": "Dordogne",
+        "Préfecture": "Périgueux",
+        "Sous-Préfecture": [
+            "Bergerac",
+            "Nontron",
+            "Sarlat-la-Canéda"
+        ],
+        "Date de création": 1790,
+        "Population": 412807,
+        "Superficie": 9060
+    },
+    "25": {
+        "Département": "Doubs",
+        "Préfecture": "Besançon",
+        "Sous-Préfecture": [
+            "Montbéliard",
+            "Pontarlier"
+        ],
+        "Date de création": 1790,
+        "Population": 545209,
+        "Superficie": 5232.6
+    },
+    "26": {
+        "Département": "Drôme",
+        "Préfecture": "Valence",
+        "Sous-Préfecture": [
+            "Die",
+            "Nyons"
+        ],
+        "Date de création": 1790,
+        "Population": 517709,
+        "Superficie": 6530
+    },
+    "27": {
+        "Département": "Eure",
+        "Préfecture": "Évreux",
+        "Sous-Préfecture": [
+            "Les Andelys",
+            "Bernay"
+        ],
+        "Date de création": 1790,
+        "Population": 599668,
+        "Superficie": 6039.9
+    },
+    "28": {
+        "Département": "Eure-et-Loir",
+        "Préfecture": "Chartres",
+        "Sous-Préfecture": [
+            "Châteaudun",
+            "Dreux",
+            "Nogent-le-Rotrou"
+        ],
+        "Date de création": 1790,
+        "Population": 431443,
+        "Superficie": 5880
+    },
+    "29": {
+        "Département": "Finistère",
+        "Préfecture": "Quimper",
+        "Sous-Préfecture": [
+            "Brest",
+            "Châteaulin",
+            "Morlaix"
+        ],
+        "Date de création": 1790,
+        "Population": 917179,
+        "Superficie": 6733
+    },
+    "30": {
+        "Département": "Gard",
+        "Préfecture": "Nîmes",
+        "Sous-Préfecture": [
+            "Alès",
+            "Le Vigan"
+        ],
+        "Date de création": 1790,
+        "Population": 751457,
+        "Superficie": 5852.8
+    },
+    "31": {
+        "Département": "Haute-Garonne",
+        "Préfecture": "Toulouse",
+        "Sous-Préfecture": [
+            "Muret",
+            "Saint-Gaudens"
+        ],
+        "Date de création": 1790,
+        "Population": 1415757,
+        "Superficie": 6309.3
+    },
+    "32": {
+        "Département": "Gers",
+        "Préfecture": "Auch",
+        "Sous-Préfecture": [
+            "Condom",
+            "Mirande"
+        ],
+        "Date de création": 1790,
+        "Population": 191819,
+        "Superficie": 6256.8
+    },
+    "33": {
+        "Département": "Gironde",
+        "Préfecture": "Bordeaux",
+        "Sous-Préfecture": [
+            "Blaye",
+            "Langon",
+            "Lesparre-Médoc",
+            "Libourne",
+            "Arcachon"
+        ],
+        "Date de création": 1790,
+        "Population": 1636391,
+        "Superficie": 9975.6
+    },
+    "34": {
+        "Département": "Hérult",
+        "Préfecture": "Montpellier",
+        "Sous-Préfecture": [
+            "Béziers",
+            "Lodève"
+        ],
+        "Date de création": 1790,
+        "Population": 1188973,
+        "Superficie": 6101
+    },
+    "35": {
+        "Département": "Ille-et-Vilaine",
+        "Préfecture": "Rennes",
+        "Sous-Préfecture": [
+            "Fougères-Vitré",
+            "Redon",
+            "Saint-Malo"
+        ],
+        "Date de création": 1790,
+        "Population": 1088855,
+        "Superficie": 6774.7
+    },
+    "36": {
+        "Département": "Indre",
+        "Préfecture": "Châteauroux",
+        "Sous-Préfecture": [
+            "Le Blanc",
+            "La Châtre",
+            "Issoudun"
+        ],
+        "Date de création": 1790,
+        "Population": 218707,
+        "Superficie": 6790.6
+    },
+    "37": {
+        "Département": "Indre-et-Loire",
+        "Préfecture": "Tours",
+        "Sous-Préfecture": [
+            "Chinon",
+            "Loches"
+        ],
+        "Date de création": 1790,
+        "Population": 612119,
+        "Superficie": 6126.7
+    },
+    "38": {
+        "Département": "Isère",
+        "Préfecture": "Grenoble",
+        "Sous-Préfecture": [
+            "La Tour-du-Pin",
+            "Vienne"
+        ],
+        "Date de création": 1790,
+        "Population": 1277513,
+        "Superficie": 7431.5
+    },
+    "39": {
+        "Département": "Jura",
+        "Préfecture": "Lons-le-Saulnier",
+        "Sous-Préfecture": [
+            "Dole",
+            "Saint-Claude"
+        ],
+        "Date de création": 1790,
+        "Population": 258798,
+        "Superficie": 4999.2
+    },
+    "40": {
+        "Département": "Landes",
+        "Préfecture": "Mont-de-Marsan",
+        "Sous-Préfecture": [
+            "Dax"
+        ],
+        "Date de création": 1790,
+        "Population": 418122,
+        "Superficie": 9242.6
+    },
+    "41": {
+        "Département": "Loir-et-Cher",
+        "Préfecture": "Blois",
+        "Sous-Préfecture": [
+            "Vendôme",
+            "Romorantin-Lanthenay"
+        ],
+        "Date de création": 1790,
+        "Population": 329357,
+        "Superficie": 6343.4
+    },
+    "42": {
+        "Département": "Loire",
+        "Préfecture": "Saint-Etienne",
+        "Sous-Préfecture": [
+            "Montbrison",
+            "Roanne"
+        ],
+        "Date de création": 1790,
+        "Population": 768508,
+        "Superficie": 4780.6
+    },
+    "43": {
+        "Département": "Haute-Loire",
+        "Préfecture": "Le Puy-en-Velay",
+        "Sous-Préfecture": [
+            "Brioude",
+            "Yssingeaux"
+        ],
+        "Date de création": 1790,
+        "Population": 227489,
+        "Superficie": 4977.1
+    },
+    "44": {
+        "Département": "Loire-Atlantique",
+        "Préfecture": "Nantes",
+        "Sous-Préfecture": [
+            "Saint-Nazaire",
+            "Châteaubriant",
+            "Ancenis"
+        ],
+        "Date de création": 1790,
+        "Population": 1445171,
+        "Superficie": 6874.4
+    },
+    "45": {
+        "Département": "Loiret",
+        "Préfecture": "Orléans",
+        "Sous-Préfecture": [
+            "Montargis",
+            "Pithiviers"
+        ],
+        "Date de création": 1790,
+        "Population": 682304,
+        "Superficie": 6775.2
+    },
+    "46": {
+        "Département": "Lot",
+        "Préfecture": "Cahors",
+        "Sous-Préfecture": [
+            "Figeac",
+            "Gourdon"
+        ],
+        "Date de création": 1790,
+        "Population": 174670,
+        "Superficie": 5216.5
+    },
+    "47": {
+        "Département": "Lot-et-Garonne",
+        "Préfecture": "Agen",
+        "Sous-Préfecture": [
+            "Marmande",
+            "Villeneuve-sur-Lot",
+            "Nérac"
+        ],
+        "Date de création": 1790,
+        "Population": 330844,
+        "Superficie": 5360.9
+    },
+    "48": {
+        "Département": "Lozère",
+        "Préfecture": "Mende",
+        "Sous-Préfecture": [
+            "Florac"
+        ],
+        "Date de création": 1790,
+        "Population": 76633,
+        "Superficie": 5166.9
+    },
+    "49": {
+        "Département": "Maine-et-Loire",
+        "Préfecture": "Angers",
+        "Sous-Préfecture": [
+            "Cholet",
+            "Saumur",
+            "Segré"
+        ],
+        "Date de création": 1790,
+        "Population": 820713,
+        "Superficie": 7106.6
+    },
+    "50": {
+        "Département": "Manche",
+        "Préfecture": "Saint-Lô",
+        "Sous-Préfecture": [
+            "Avranches",
+            "Cherbourg",
+            "Coutances"
+        ],
+        "Date de création": 1790,
+        "Population": 495093,
+        "Superficie": 5951.5
+    },
+    "51": {
+        "Département": "Marne",
+        "Préfecture": "Châlons-en-Champagne",
+        "Sous-Préfecture": [
+            "Épernay",
+            "Reims",
+            "Vitry-le-François"
+        ],
+        "Date de création": 1790,
+        "Population": 566659,
+        "Superficie": 8169.1
+    },
+    "52": {
+        "Département": "Haute-Marne",
+        "Préfecture": "Chaumont",
+        "Sous-Préfecture": [
+            "Langres",
+            "Saint-Dizier"
+        ],
+        "Date de création": 1790,
+        "Population": 171798,
+        "Superficie": 6210.6
+    },
+    "53": {
+        "Département": "Mayenne",
+        "Préfecture": "Laval",
+        "Sous-Préfecture": [
+            "Château-Gontier",
+            "Mayenne"
+        ],
+        "Date de création": 1790,
+        "Population": 306538,
+        "Superficie": 5175.2
+    },
+    "54": {
+        "Département": "Meurthe-et-Moselle",
+        "Préfecture": "Nancy",
+        "Sous-Préfecture": [
+            "Val-de-Briey",
+            "Lunéville",
+            "Toul"
+        ],
+        "Date de création": 1790,
+        "Population": 732590,
+        "Superficie": 5245.9
+    },
+    "55": {
+        "Département": "Meuse",
+        "Préfecture": "Bar-le-Duc",
+        "Sous-Préfecture": [
+            "Commercy",
+            "Verdun"
+        ],
+        "Date de création": 1790,
+        "Population": 183001,
+        "Superficie": 6211.4
+    },
+    "56": {
+        "Département": "Morbihan",
+        "Préfecture": "Vannes",
+        "Sous-Préfecture": [
+            "Lorient",
+            "Pontivy"
+        ],
+        "Date de création": 1790,
+        "Population": 764161,
+        "Superficie": 6822.6
+    },
+    "57": {
+        "Département": "Moselle",
+        "Préfecture": "Metz",
+        "Sous-Préfecture": [
+            "Forbach-Boulay-Moselle",
+            "Sarrebourg-Château-Salins",
+            "Sarreguemines",
+            "Thionville"
+        ],
+        "Date de création": 1790,
+        "Population": 1049155,
+        "Superficie": 6216.3
+    },
+    "58": {
+        "Département": "Nièvre",
+        "Préfecture": "Nevers",
+        "Sous-Préfecture": [
+            "Château-Chinon",
+            "Clamecy",
+            "Cosne-Cours-sur-Loire"
+        ],
+        "Date de création": 1790,
+        "Population": 202670,
+        "Superficie": 6816.7
+    },
+    "59": {
+        "Département": "Nord",
+        "Préfecture": "Lille",
+        "Sous-Préfecture": [
+            "Avesnes-sur-Helpe",
+            "Cambrai",
+            "Douai",
+            "Dunkerque",
+            "Valenciennes"
+        ],
+        "Date de création": 1790,
+        "Population": 2607746,
+        "Superficie": 5742.8
+    },
+    "60": {
+        "Département": "Oise",
+        "Préfecture": "Beauvais",
+        "Sous-Préfecture": [
+            "Clermont",
+            "Compiègne",
+            "Senlis"
+        ],
+        "Date de création": 1790,
+        "Population": 829699,
+        "Superficie": 5860.2
+    },
+    "61": {
+        "Département": "Orne",
+        "Préfecture": "Alençon",
+        "Sous-Préfecture": [
+            "Argentan",
+            "Mortagne-au-Perche"
+        ],
+        "Date de création": 1790,
+        "Population": 278475,
+        "Superficie": 6103.4
+    },
+    "62": {
+        "Département": "Pas-de-Calais",
+        "Préfecture": "Arras",
+        "Sous-Préfecture": [
+            "Béthune",
+            "Boulogne-sur-Mer",
+            "Montreuil",
+            "Saint-Omer",
+            "Calais",
+            "Lens"
+        ],
+        "Date de création": 1790,
+        "Population": 1462167,
+        "Superficie": 6671.4
+    },
+    "63": {
+        "Département": "Puy-de-Dôme",
+        "Préfecture": "Clermont-Ferrand",
+        "Sous-Préfecture": [
+            "Ambert",
+            "Issoire",
+            "Riom",
+            "Thiers"
+        ],
+        "Date de création": 1790,
+        "Population": 661852,
+        "Superficie": 7969.7
+    },
+    "64": {
+        "Département": "Pyrénées-Atlantiques",
+        "Préfecture": "Pau",
+        "Sous-Préfecture": [
+            "Bayonne",
+            "Oloron-Sainte-Marie"
+        ],
+        "Date de création": 1790,
+        "Population": 687240,
+        "Superficie": 7645.8
+    },
+    "65": {
+        "Département": "Hautes-Pyrénées",
+        "Préfecture": "Tarbes",
+        "Sous-Préfecture": [
+            "Argelès-Gazost",
+            "Bagnères-de-Bigorre"
+        ],
+        "Date de création": 1790,
+        "Population": 229788,
+        "Superficie": 4464
+    },
+    "66": {
+        "Département": "Pyrénées-Orientales",
+        "Préfecture": "Perpignan",
+        "Sous-Préfecture": [
+            "Céret",
+            "Prades"
+        ],
+        "Date de création": 1790,
+        "Population": 482765,
+        "Superficie": 4116
+    },
+    "67": {
+        "Département": "Bas-Rhin",
+        "Préfecture": "Strasbourg",
+        "Sous-Préfecture": [
+            "Haguenau-Wissembourg",
+            "Molsheim",
+            "Saverne",
+            "Sélestat-Erstein"
+        ],
+        "Date de création": 1790,
+        "Population": 1148073,
+        "Superficie": 4755
+    },
+    "68": {
+        "Département": "Haut-Rhin",
+        "Préfecture": "Colmar",
+        "Sous-Préfecture": [
+            "Altkirch",
+            "Mulhouse",
+            "Thann-Guebwiller"
+        ],
+        "Date de création": 1790,
+        "Population": 767842,
+        "Superficie": 3525.2
+    },
+    "69": {
+        "Département": "Rhône",
+        "Préfecture": "Lyon",
+        "Sous-Préfecture": [
+            "Villefranche-sur-Saône"
+        ],
+        "Date de création": 1790,
+        "Population": 1883437,
+        "Superficie": 3249.1
+    },
+    "70": {
+        "Département": "Saône",
+        "Préfecture": "Vesoul",
+        "Sous-Préfecture": [
+            "Lure"
+        ],
+        "Date de création": 1790,
+        "Population": 234601,
+        "Superficie": 5360.1
+    },
+    "71": {
+        "Département": "Saône-et-Loire",
+        "Préfecture": "Mâcon",
+        "Sous-Préfecture": [
+            "Autun",
+            "Chalon-sur-Saône",
+            "Charolles",
+            "Louhans"
+        ],
+        "Date de création": 1790,
+        "Population": 551063,
+        "Superficie": 8574.7
+    },
+    "72": {
+        "Département": "Sarthe",
+        "Préfecture": "Le Mans",
+        "Sous-Préfecture": [
+            "La Flèche",
+            "Mamers"
+        ],
+        "Date de création": 1790,
+        "Population": 566993,
+        "Superficie": 6206
+    },
+    "73": {
+        "Département": "Savoie",
+        "Préfecture": "Chambéry",
+        "Sous-Préfecture": [
+            "Albertville",
+            "Saint-Jean-de-Maurienne"
+        ],
+        "Date de création": 1860,
+        "Population": 439750,
+        "Superficie": 6028.3
+    },
+    "74": {
+        "Département": "Haute-Savoie",
+        "Préfecture": "Annecy",
+        "Sous-Préfecture": [
+            "Bonneville",
+            "Saint-Julien-en-Genevois",
+            "Thonon-les-Bains"
+        ],
+        "Date de création": 1860,
+        "Population": 835206,
+        "Superficie": 4387.8
+    },
+    "75": {
+        "Département": "Paris",
+        "Préfecture": "Paris",
+        "Sous-Préfecture": [],
+        "Date de création": 1982,
+        "Population": 2145906,
+        "Superficie": 105.4
+    },
+    "76": {
+        "Département": "Seine-Maritime",
+        "Préfecture": "Rouen",
+        "Sous-Préfecture": [
+            "Dieppe",
+            "Le Havre"
+        ],
+        "Date de création": 1790,
+        "Population": 1254739,
+        "Superficie": 6277.6
+    },
+    "77": {
+        "Département": "Seine-et-Marne",
+        "Préfecture": "Melun",
+        "Sous-Préfecture": [
+            "Meaux",
+            "Provins",
+            "Fontainebleau",
+            "Torcy"
+        ],
+        "Date de création": 1790,
+        "Population": 1428636,
+        "Superficie": 5915.3
+    },
+    "78": {
+        "Département": "Yvelines",
+        "Préfecture": "Versailles",
+        "Sous-Préfecture": [
+            "Mantes-la-Jolie",
+            "Rambouillet",
+            "Saint-Germain-en-Laye"
+        ],
+        "Date de création": 1968,
+        "Population": 1449723,
+        "Superficie": 2284.4
+    },
+    "79": {
+        "Département": "Deux-Sèvres",
+        "Préfecture": "Niort",
+        "Sous-Préfecture": [
+            "Bressuire",
+            "Parthenay"
+        ],
+        "Date de création": 1790,
+        "Population": 374481,
+        "Superficie": 5999.4
+    },
+    "80": {
+        "Département": "Somme",
+        "Préfecture": "Amiens",
+        "Sous-Préfecture": [
+            "Abbeville",
+            "Montdidier",
+            "Péronne"
+        ],
+        "Date de création": 1790,
+        "Population": 568748,
+        "Superficie": 6170.1
+    },
+    "81": {
+        "Département": "Tarn",
+        "Préfecture": "Albi",
+        "Sous-Préfecture": [
+            "Castres"
+        ],
+        "Date de création": 1790,
+        "Population": 391066,
+        "Superficie": 5757.9
+    },
+    "82": {
+        "Département": "Tarn-et-Garonne",
+        "Préfecture": "Montauban",
+        "Sous-Préfecture": [
+            "Castelsarrasin"
+        ],
+        "Date de création": 1808,
+        "Population": 262316,
+        "Superficie": 3718.3
+    },
+    "83": {
+        "Département": "Var",
+        "Préfecture": "Toulon",
+        "Sous-Préfecture": [
+            "Draguignan",
+            "Brignoles"
+        ],
+        "Date de création": 1790,
+        "Population": 1075189,
+        "Superficie": 5972.5
+    },
+    "84": {
+        "Département": "Vaucluse",
+        "Préfecture": "Avignon",
+        "Sous-Préfecture": [
+            "Apt",
+            "Carpentras"
+        ],
+        "Date de création": 1793,
+        "Population": 561941,
+        "Superficie": 3567.3
+    },
+    "85": {
+        "Département": "Vendée",
+        "Préfecture": "La Roche-sur-Yon",
+        "Sous-Préfecture": [
+            "Fontenay-le-Comte",
+            "Les Sables-d\"Olonne"
+        ],
+        "Date de création": 1790,
+        "Population": 692705,
+        "Superficie": 6719.6
+    },
+    "86": {
+        "Département": "Vienne",
+        "Préfecture": "Poitiers",
+        "Sous-Préfecture": [
+            "Châtellerault",
+            "Montmorillon"
+        ],
+        "Date de création": 1790,
+        "Population": 439332,
+        "Superficie": 6990.4
+    },
+    "87": {
+        "Département": "Haute-Vienne",
+        "Préfecture": "Limoges",
+        "Sous-Préfecture": [
+            "Bellac",
+            "Rochechouart"
+        ],
+        "Date de création": 1790,
+        "Population": 372123,
+        "Superficie": 5520.1
+    },
+    "88": {
+        "Département": "Vosges",
+        "Préfecture": "Épinal",
+        "Sous-Préfecture": [
+            "Neufchâteau",
+            "Saint-Dié-des-Vosges"
+        ],
+        "Date de création": 1790,
+        "Population": 362397,
+        "Superficie": 5873.8
+    },
+    "89": {
+        "Département": "Yonne",
+        "Préfecture": "Auxerre",
+        "Sous-Préfecture": [
+            "Avallon",
+            "Sens"
+        ],
+        "Date de création": 1790,
+        "Population": 334156,
+        "Superficie": 7427.4
+    },
+    "90": {
+        "Département": "Territoire-de-Belfort",
+        "Préfecture": "Belfort",
+        "Sous-Préfecture": [],
+        "Date de création": 1922,
+        "Population": 140120,
+        "Superficie": 609.4
+    },
+    "91": {
+        "Département": "Essonne",
+        "Préfecture": "Évry-Courcouronnes",
+        "Sous-Préfecture": [
+            "Étampes",
+            "Palaiseau"
+        ],
+        "Date de création": 1968,
+        "Population": 1306118,
+        "Superficie": 1804.4
+    },
+    "92": {
+        "Département": "Hauts-de-Seine",
+        "Préfecture": "Nanterre",
+        "Sous-Préfecture": [
+            "Antony",
+            "Boulogne-Billancourt"
+        ],
+        "Date de création": 1968,
+        "Population": 1626213,
+        "Superficie": 175.6
+    },
+    "93": {
+        "Département": "Seine-Saint-Denis",
+        "Préfecture": "Bobigny",
+        "Sous-Préfecture": [
+            "Le Raincy",
+            "Saint-Denis"
+        ],
+        "Date de création": 1968,
+        "Population": 1655422,
+        "Superficie": 236.2
+    },
+    "94": {
+        "Département": "Val-de-Marne",
+        "Préfecture": "Créteil",
+        "Sous-Préfecture": [
+            "Nogent-sur-Marne",
+            "L\"Haÿ-les-Roses"
+        ],
+        "Date de création": 1968,
+        "Population": 1407972,
+        "Superficie": 245
+    },
+    "95": {
+        "Département": "Val-d\"Oise",
+        "Préfecture": "Pontoise",
+        "Sous-Préfecture": [
+            "Argenteuil",
+            "Sarcelles"
+        ],
+        "Date de création": 1968,
+        "Population": 1251804,
+        "Superficie": 1245.9
+    },
+    "971": {
+        "Département": "Guadeloupe",
+        "Préfecture": "Basse-Terre",
+        "Sous-Préfecture": [
+            "Pointe-à-Pitre"
+        ],
+        "Date de création": 1946,
+        "Population": 383559,
+        "Superficie": 1628.4
+    },
+    "972": {
+        "Département": "Martinique",
+        "Préfecture": "Fort-de-France",
+        "Sous-Préfecture": [
+            "La Trinité",
+            "Le Marin",
+            "Saint-Pierre"
+        ],
+        "Date de création": 1946,
+        "Population": 361225,
+        "Superficie": 1128
+    },
+    "973": {
+        "Département": "Guyane",
+        "Préfecture": "Cayenne",
+        "Sous-Préfecture": [
+            "Saint-Laurent-du-Maroni",
+            "Saint-Georges"
+        ],
+        "Date de création": 1946,
+        "Population": 285133,
+        "Superficie": 83533.9
+    },
+    "974": {
+        "Département": "La Réunion",
+        "Préfecture": "Saint-Denis",
+        "Sous-Préfecture": [
+            "Saint-Pierre",
+            "Saint-Benoît",
+            "Saint-Paul"
+        ],
+        "Date de création": 1946,
+        "Population": 863083,
+        "Superficie": 2503.7
+    },
+    "976": {
+        "Département": "Mayotte",
+        "Préfecture": "Mamoudzou",
+        "Sous-Préfecture": [],
+        "Date de création": 2011,
+        "Population": 256518,
+        "Superficie": 376
+    }
+}
