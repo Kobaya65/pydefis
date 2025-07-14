@@ -4,6 +4,7 @@
 /pestage_ascii_art/portrait_*.txt
 /message_de_l_espace/*
 /les_cartes_chocogrenouille/*
+/env_pydefis/*
 
 # Byte-compiled / optimized / DLL files
 /__pycache__/

@@ -1875,7 +1875,7 @@ def la_chambre_des_pairs() -> None:
     with open(file="./la_chambre_des_pairs/texte.txt", mode="r", encoding="utf-8") as f:
         texte = f.read()
 
-    dates = re.findall(f"AUSTINPOWERSN.+LE\d{2}(PLUS|MOINS)\d{2}AUMOIS\d{2}(PLUS|MOINS)\d{2}EN\d{4}(PLUS|MOINS)\d{2}ANNEES", texte)
+    dates = re.findall(r"AUSTINPOWERSN.+LE\d+PLUS|MOINS)\d+AUMOIS\d+(PLUS|MOINS)\d+EN\d+(PLUS|MOINS)\d+ANNEES", texte)
 
     sequences = []
     sequence = ""
@@ -1927,8 +1927,10 @@ def les_ecailles_du_dragon() -> None:
 
     print("Fin")
 
-def carte_du_marauder():
-    """https://pydefis.callicode.fr/defis/MaraudeurConfusio/txt"""
+def carte_du_marauder() -> None:
+    """https://pydefis.callicode.fr/defis/MaraudeurConfusio/txt
+    20250714 non résolu
+    """
     fichier = "./carte_du_marauder/maraudeur_cr.png"
     cible = "./carte_du_marauder/maraudeur_cr.png"
     # charger l'image
@@ -1945,16 +1947,29 @@ def carte_du_marauder():
     # (a * i + b) % n
     for x in range(hauteur):
         for y in range(largeur):
-            no_pixel = x * (y * largeur)
+            no_pixel = x * y * largeur
             new_pos = (a * no_pixel + b) % n
             new_x = new_pos % largeur
-            new_y = new_pos % hauteur
-            # source color is mode RGBA, so ignore last value (canal alpha)
-            pixels_cible[new_x, new_y] = pixels_fichier[x, y][:3]
+            new_y = new_pos // largeur
+            pixels_cible[new_x, new_y] = pixels_fichier[x, y]
 
     image_cible.save("./carte_du_marauder/maraudeur_decrypte.png")
     print("Fin.")
 
+
+def recherche_de_destinations() -> None:
+    """https://pydefis.callicode.fr/defis/C23_RechercheDestinations/txt
+    AB = sqrt((xB - xA)² + (yB - yA)²)
+    """
+    from zipfile import ZipFile
+
+    with ZipFile('./recherche_de_destinations/coordonnees_destinations_300.zip', 'w') as myzip:
+        contenu = myzip.read()
+    
+    pass
+
+
+    del ZipFile
 
 if __name__ == "__main__":
     carte_du_marauder()
