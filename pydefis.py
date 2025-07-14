@@ -7,14 +7,13 @@ import os.path
 import datetime
 from locale import setlocale, LC_TIME
 import json
-import requests
 from math import dist, sqrt
 from time import sleep
 from operator import itemgetter
 import unicodedata
 
+import requests
 from PIL import Image
-
 
 
 def lion_nemme() -> str:
@@ -1292,9 +1291,6 @@ def l_enregistreur_cache_1() -> None:
     sound1 = AudioSegment.from_file("./l_enregistreeur_cache_1/enregistrement_01a.wav", format="wav")
     sound2 = AudioSegment.from_file("./l_enregistreeur_cache_1/enregistrement_01b.wav", format="wav")
 
-    # sound1 6 dB louder
-    louder = sound1 + 6
-
     # Overlay sound2 over sound1 at position 0 (use louder instead of sound1 to use the louder version)
     overlay_1 = sound1.overlay(sound2, position=0)
 
@@ -1302,6 +1298,7 @@ def l_enregistreur_cache_1() -> None:
     _ = overlay_1.export("output.wav", format="wav")
 
     del wave
+    del AudioSegment
 
 
 def portrait_colore() -> None:
@@ -1962,14 +1959,37 @@ def recherche_de_destinations() -> None:
     AB = sqrt((xB - xA)² + (yB - yA)²)
     """
     from zipfile import ZipFile
-
-    with ZipFile('./recherche_de_destinations/coordonnees_destinations_300.zip', 'w') as myzip:
-        contenu = myzip.read()
     
-    pass
+    with ZipFile("./recherche_de_destinations/coordonnees_destinations_300.zip", "r") as myzip:
+        a = myzip.namelist()
+        contenu_b = myzip.read(a[0])
 
+    contenu = contenu_b.decode("utf-8")
+    liste_destinations = contenu.split('\n')
+
+    liste_num_dest = []
+    for dest in liste_destinations:
+        splt = dest.split(", ")
+        liste_num_dest.append((float(splt[0]), float(splt[1])))
+
+    # sort destinations
+    liste_num_dest.sort(key=lambda x: (x[0], x[1]))
+
+    result_file = "./recherche_de_destinations/resultats.txt"
+    fw = open(file=result_file, mode="w", encoding="utf-8", buffering=1)
+
+    total = len(liste_num_dest) ** 2
+    for i, a in enumerate(liste_num_dest, 1):
+        for j, b in enumerate(liste_num_dest, 1):
+            print('{:,.0f} / {:,.0f}'.format(i * j, total).replace(',', ' '))
+            if a != b:
+                distance = sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
+                fw.write(f"{a},{b},{distance}\n")
+
+    fw.close()
 
     del ZipFile
 
+
 if __name__ == "__main__":
-    carte_du_marauder()
+    recherche_de_destinations()
