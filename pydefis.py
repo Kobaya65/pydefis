@@ -455,7 +455,7 @@ def mon_beau_miroir() -> str:
 def ocean_liquide_mimas() -> None:
     """https://pydefis.callicode.fr/defis/C24_Mimas/txt
     """
-    def minimums(profondeurs: list[float], prof_min :float) -> tuple[int , int]:
+    def minimums(profondeurs: list[float], prof_min: float) -> tuple[int, int]:
         """Find minimum of ligne and colonne.
         - profondeurs: list of depths
         - prof_min: minimum depth to search for\n
@@ -494,7 +494,8 @@ def ocean_liquide_mimas() -> None:
 
     # filter dictionary to keep only keys starting with 'carte'
     # thanks to dictionary comprehension
-    cartes = {key: value for key, value in objet_cartes_json.items() if key.startswith('carte')}
+    cartes = {key: value for key, value in objet_cartes_json.items()
+              if key.startswith('carte')}
 
     for carte in cartes:
         hauteur = len(cartes[carte])
@@ -607,7 +608,7 @@ def analyse_de_sequences_2_2() -> int:
     return total
 
 
-def des_lettres_bien_rangees()-> int:
+def des_lettres_bien_rangees() -> int:
     """https://pydefis.callicode.fr/defis/C23_MotsAlpha/txt
     """
     with open('./des_lettres_bien_rangees/dico_accentues.json', mode="r", encoding="utf-8") as f:
@@ -633,7 +634,7 @@ def des_lettres_bien_rangees()-> int:
             else:
                 temp += mot[pos].lower()
 
-            if pos > 0 and temp[pos] < temp[pos -1]:
+            if pos > 0 and temp[pos] < temp[pos - 1]:
                 break
         else:
             result += 1
@@ -646,7 +647,8 @@ def monnaie() -> str:
     """
     pieces = (50, 20, 10, 5, 2, 1)
     pieces_utilisees = [0, 0, 0, 0, 0, 0]
-    rembourse = (47, 13, 19, 62, 84, 32, 50, 42, 91, 93, 34, 19, 92, 35, 19, 4, 17)
+    rembourse = (47, 13, 19, 62, 84, 32, 50, 42,
+                 91, 93, 34, 19, 92, 35, 19, 4, 17)
 
     for remb in rembourse:
         somme = 0
@@ -681,7 +683,6 @@ def des_lettres_bien_rangees_2() -> int:
             words = f.readlines()
         return [word.strip() for word in words if len(word.strip()) > 3]
 
-
     def normalize_word(word: str, accent_map: dict[str, str]) -> str:
         """Normalize word by removing accents and converting to lowercase.
         - word: word to normalize
@@ -695,7 +696,6 @@ def des_lettres_bien_rangees_2() -> int:
             else:
                 normalized += char.lower()
         return normalized
-
 
     def is_alphabetical(word: str) -> bool:
         """Check if letters of word are in alphabetical order.
@@ -754,7 +754,8 @@ def exemple_url_1() -> None:
     """
     from defis_url import DefisUrl
 
-    d = DefisUrl("https://pydefis.callicode.fr/defis/ExempleURL/get/Kobaya/96190", verify=True)
+    d = DefisUrl(
+        "https://pydefis.callicode.fr/defis/ExempleURL/get/Kobaya/96190", verify=True)
     lignes = d.get()
     somme = int(lignes[0]) + int(lignes[1])
 
@@ -774,7 +775,8 @@ def exemple_url_2() -> None:
     res = requests.get(url_get, verify=True)
     lignes = res.text.split("\n")
     somme = int(lignes[1]) + int(lignes[2])
-    ret = requests.post(url_post, verify=True, data={"sig": lignes[0], "rep": somme})
+    ret = requests.post(url_post, verify=True, data={
+                        "sig": lignes[0], "rep": somme})
     print(ret.text)
 
 
@@ -889,7 +891,8 @@ def les_cartes_chocogrenouille_a_trier() -> str:
         "aMI7JVIH+mN1UYdSNih7hMO9A0wstHyI2QyDe7tkV2RmjDs3/reponse"
     )
 
-    personnages = ["harry", "hermione", "ron", "luna", "neville", "ginny", "fred", "george", "dobby", "hedwige"]
+    personnages = ["harry", "hermione", "ron", "luna",
+                   "neville", "ginny", "fred", "george", "dobby", "hedwige"]
 
     idx = 1
     while idx <= 100:
@@ -904,7 +907,8 @@ def les_cartes_chocogrenouille_a_trier() -> str:
 
         alea = random.randint(0, len(personnages) - 1)
         sleep(1)
-        retour = requests.get(f'{url_nom_personnage}/{personnages[alea]}', verify=True)
+        retour = requests.get(
+            f'{url_nom_personnage}/{personnages[alea]}', verify=True)
         print(f'{idx:>3} {retour.text[:-1]}')
 
         with open(f"./les_cartes_chocogrenouille/{idx:0>3}_{retour.text[1:-2]}.png", "wb") as f:
@@ -986,7 +990,6 @@ def sequence_cesar() -> None:
 
         return res
 
-
     with open(file="./sequences_cesar/sequences.txt", mode="r", encoding="utf-8") as f:
         sequences = f.readlines()
 
@@ -1004,7 +1007,7 @@ def sequence_cesar() -> None:
             break
 
 
-def  le_sanglier_d_erymanthe() -> None:
+def le_sanglier_d_erymanthe() -> None:
     """https://pydefis.callicode.fr/defis/Herculito04Sanglier/txt"""
     def calcul(point_haut: int, point_bas: int) -> int:
         """Compute number of throwed stones.
@@ -1015,7 +1018,6 @@ def  le_sanglier_d_erymanthe() -> None:
             int: number of throwed stones
         """
         return int((point_haut - point_bas) / 10) + 1
-
 
     entree = [
         0, 20, 10, 120, 40, 170, 40, 60, 50, 100,
@@ -1097,7 +1099,7 @@ def le_message_pour_queulorior() -> None:
     turtle.teleport(-800, 0)
 
     for l in entree:
-        if l =="N":
+        if l == "N":
             turtle.setheading(90)
         elif l == "E":
             turtle.setheading(0)
@@ -1119,7 +1121,7 @@ def sw_iv_on_passe_en_vitesse_lumiere() -> None:
     x = entree[0]
     y = entree[1]
     z = entree[2]
-    while 10 * x > y :
+    while 10 * x > y:
         x = (y * z) % 10000
         y = (3 * z) % 10000
         z = (7 * z) % 10000
@@ -1251,7 +1253,6 @@ def le_jour_de_la_serviette() -> None:
 
         return max_tuple
 
-
     ref = {"2", "4"}
     if not os.path.exists(FICHIER):
         create_result_file()
@@ -1288,8 +1289,10 @@ def l_enregistreur_cache_1() -> None:
     import wave
     from pydub import AudioSegment
 
-    sound1 = AudioSegment.from_file("./l_enregistreeur_cache_1/enregistrement_01a.wav", format="wav")
-    sound2 = AudioSegment.from_file("./l_enregistreeur_cache_1/enregistrement_01b.wav", format="wav")
+    sound1 = AudioSegment.from_file(
+        "./l_enregistreeur_cache_1/enregistrement_01a.wav", format="wav")
+    sound2 = AudioSegment.from_file(
+        "./l_enregistreeur_cache_1/enregistrement_01b.wav", format="wav")
 
     # Overlay sound2 over sound1 at position 0 (use louder instead of sound1 to use the louder version)
     overlay_1 = sound1.overlay(sound2, position=0)
@@ -1372,7 +1375,7 @@ def l_ordre_66_ne_vaut_pas_66() -> bool:
             bool: True if product of figures in nombre only contains odd figures
         """
         nombre_str = str(nombre)
-        produit  = 1
+        produit = 1
         for x in nombre_str:
             produit *= int(x)
 
@@ -1394,7 +1397,7 @@ def l_ordre_66_ne_vaut_pas_66() -> bool:
             bool: True if sum of figures in nombre only contains odd figures
         """
         nombre_str = str(nombre)
-        somme  = 0
+        somme = 0
         for x in nombre_str:
             somme += int(x)
 
@@ -1428,23 +1431,31 @@ def les_pouvoirs_psychiques_de_psystigri() -> None:
         14, -80, -17, 42, -73, -81, 19, -77, -85, -100, 3, 17, 72, 9, 34, 11, 1, 60, 96,
         40, 54, 76, -77, -52, 19, -54, -92, -92, 27, 48, -43, 59, 94, 72, -17, -88, 18,
         2, -77, 86, 66, -67, 51, 14, 79, -58, -1, -21, 76, 60, 51, -26, -91, 32, 79, 36,
-        11, -9, 34, -95, -92, -89, -76, 55, 69, -21, -1, 51, 85, 28, 15, -70, 15, 4, -72,
+        11, -9, 34, -95, -92, -89, -76, 55, 69, -
+        21, -1, 51, 85, 28, 15, -70, 15, 4, -72,
         70, -86, 57, -22, -53, -64, 9, 63, 26, 30, -71, -67, -94, 9, 53, -80, 55, -52,
-        -30, 55, 11, 99, 51, -48, 46, -56, -64, 50, -38, 34, 64, 71, -92, 79, -53, -2, 88,
+        -30, 55, 11, 99, 51, -48, 46, -56, -64, 50, -
+        38, 34, 64, 71, -92, 79, -53, -2, 88,
         -8, 96, 14, 14, -89, -90, -19, -26, 17, 97, 70, 62, 83, 28, 96, -55, -72, -37, 20,
         -12, -49, 65, 28, -11, -40, 61, -67, 7, -32, 13, -81, -53, -92, 43, -92, -3, 1,
-        -15, -72, 64, -53, -16, 90, -47, -91, 68, 78, -67, 15, -68, -92, -97, -18, -6, 10,
+        -15, -72, 64, -53, -16, 90, -47, -91, 68, 78, -
+        67, 15, -68, -92, -97, -18, -6, 10,
         -37, -47, 60, -17, -2, -51, -46, 65, 81, 46, 33, -15, 82, 96, 28, -21, -41, -87,
         -52, -68, 55, -75, 57, -94, -16, -1, -28, 67, 35, 81, 78, -47, 93, -1, 52, -53,
         14, 2, -15, 14, -82, 43, -48, -53, 52, -7, -27, -89, 80, 22, 90, -29, -53, -22,
-        -42, 35, -9, 36, 29, -85, 19, -20, 33, -93, 50, 36, -37, -28, -94, -61, -32, -53,
-        -30, -97, -4, -100, -88, -44, 68, 29, -2, 53, -62, -81, -89, 74, 80, 80, 88, -13,
-        -90, 15, 1, -45, 3, 4, 81, 55, -94, -91, -62, -60, -52, 45, -52, 77, 10, -63, 43,
+        -42, 35, -9, 36, 29, -85, 19, -20, 33, -
+        93, 50, 36, -37, -28, -94, -61, -32, -53,
+        -30, -97, -4, -100, -88, -44, 68, 29, -
+        2, 53, -62, -81, -89, 74, 80, 80, 88, -13,
+        -90, 15, 1, -45, 3, 4, 81, 55, -94, -91, -
+        62, -60, -52, 45, -52, 77, 10, -63, 43,
         -36, -90, 58, 26, -76, -2, -76, -51, 60, 64, 5, 32, 14, 22, 1, -80, -52, -33, 39,
         74, -60, 32, 42, -83, -62, 0, -43, -61, 77, -96, -63, -60, 92, 68, -53, -53, 5,
-        39, -4, 51, 72, -23, 86, 31, 70, 77, 38, -51, 25, -51, 33, -94, -17, 20, -47, 93,
+        39, -4, 51, 72, -23, 86, 31, 70, 77, 38, -
+        51, 25, -51, 33, -94, -17, 20, -47, 93,
         60, 61, 80, -54, -54, -88, -75, 34, 11, 53, 7, -2, 2, -55, -78, 23, -78, -31, -7,
-        10, 85, 41, 20, -93, -7, -31, 55, -62, -54, -35, -66, -70, -98, -13, 98, -15, 70,
+        10, 85, 41, 20, -93, -7, -31, 55, -62, -
+        54, -35, -66, -70, -98, -13, 98, -15, 70,
         78, 21, -87, -79, -67, 22, 89, 84, -49, 96, 63, 94, 74, 46, 82, -34, 73, 42, 70,
         26, -2, 68, -48, -63, -86, 55, 42, 16, -32, -98, 14, 70, -68, -88, -21, 75, 45,
         18, 10, 71, 93, 99, -58, 42, 14
@@ -1645,7 +1656,8 @@ def balade_sur_un_echiquier() -> None:
             y = -1
 
     reponse = f"{str(len(cases_visitees))}{chr(col + 64)}{ligne}"
-    retour = requests.post(soumission_rep, verify=True, data={"sig": rep[0][2:], "rep": reponse})
+    retour = requests.post(soumission_rep, verify=True, data={
+                           "sig": rep[0][2:], "rep": reponse})
     print(f"Résultat = {retour.content.decode("utf-8")}")
 
 
@@ -1692,7 +1704,6 @@ def les_chiffres_de_fibonacci() -> None:
 
         if somme == entree:
             break
-
 
     print(f"Résultat = {new}")
 
@@ -1794,7 +1805,7 @@ def les_noms_des_ewoks_2() -> None:
     with open(file="./les_noms_des_ewoks_2/noms.txt", mode="r", encoding="utf-8") as f:
         noms = f.readlines()
 
-    voyelles = ["A","E","I","O","U","Y","a","e","i","o","u","y"]
+    voyelles = ["A", "E", "I", "O", "U", "Y", "a", "e", "i", "o", "u", "y"]
     resultat = 0
     for nom in noms:
         nb_voyelles = 0
@@ -1872,7 +1883,8 @@ def la_chambre_des_pairs() -> None:
     with open(file="./la_chambre_des_pairs/texte.txt", mode="r", encoding="utf-8") as f:
         texte = f.read()
 
-    dates = re.findall(r"AUSTINPOWERSN.+LE\d+PLUS|MOINS)\d+AUMOIS\d+(PLUS|MOINS)\d+EN\d+(PLUS|MOINS)\d+ANNEES", texte)
+    dates = re.findall(
+        r"AUSTINPOWERSN.+LE\d+PLUS|MOINS)\d+AUMOIS\d+(PLUS|MOINS)\d+EN\d+(PLUS|MOINS)\d+ANNEES", texte)
 
     sequences = []
     sequence = ""
@@ -1924,6 +1936,7 @@ def les_ecailles_du_dragon() -> None:
 
     print("Fin")
 
+
 def carte_du_marauder() -> None:
     """https://pydefis.callicode.fr/defis/MaraudeurConfusio/txt
     20250714 non résolu
@@ -1959,7 +1972,27 @@ def recherche_de_destinations() -> None:
     AB = sqrt((xB - xA)² + (yB - yA)²)
     """
     from zipfile import ZipFile
-    
+
+    distances = []
+    # def manage_distances(a: tuple[float, float], b: tuple[float, float], distances: list) -> list:
+
+    def manage_distances(x: tuple[float, float], y: tuple[float, float], local_distances: list[float]) -> list[tuple[float, float], tuple[float, float], float]:
+        """Compute distance between a and b, and add it to distances if within the 20 smaller distances.
+        Args:
+            x (tuple[float, float]): point x abscissa and ordinate
+            y (tuple[float, float]): point y abscissa and ordinate
+            local_distances (list[float]): list of positions and their distances
+        Returns:
+            list[tuple[float, float], tuple[float, float], float]: list of positions and their distances
+        """
+        distance = sqrt((y[0] - x[0]) ** 2 + (y[1] - x[1]) ** 2)
+        local_distances.append((x, y, distance))
+        local_distances.sort(key=lambda x: x[2])
+        if len(local_distances) > 20:
+            local_distances.pop(len(local_distances) - 1)
+
+        return local_distances
+
     with ZipFile("./recherche_de_destinations/coordonnees_destinations_300.zip", "r") as myzip:
         a = myzip.namelist()
         contenu_b = myzip.read(a[0])
@@ -1974,21 +2007,17 @@ def recherche_de_destinations() -> None:
 
     # sort destinations
     liste_num_dest.sort(key=lambda x: (x[0], x[1]))
-
-    result_file = "./recherche_de_destinations/resultats.txt"
-    fw = open(file=result_file, mode="w", encoding="utf-8", buffering=1)
-
     total = len(liste_num_dest) ** 2
-    for i, a in enumerate(liste_num_dest, 1):
-        for j, b in enumerate(liste_num_dest, 1):
-            print('{:,.0f} / {:,.0f}'.format(i * j, total).replace(',', ' '))
+    idx = 1
+    for a in liste_num_dest:
+        for b in liste_num_dest:
+            print('{:,.0f} / {:,.0f}'.format(idx, total).replace(',', ' '))
             if a != b:
-                distance = sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
-                fw.write(f"{a},{b},{distance}\n")
-
-    fw.close()
+                distances = manage_distances(a, b, distances)
+            idx += 1
 
     del ZipFile
+    print("Terminé.")
 
 
 if __name__ == "__main__":
