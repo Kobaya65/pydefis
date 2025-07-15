@@ -1973,8 +1973,11 @@ def recherche_de_destinations() -> None:
     from zipfile import ZipFile
 
     distances = []
-    def manage_distances(coord_a: tuple[float, float], coord_b: tuple[float, float], local_distances: list[float]) \
-                            -> list[tuple[float, float], tuple[float, float], float]:
+
+    def manage_distances(coord_a: tuple[float, float],
+                         coord_b: tuple[float, float],
+                         local_distances: list[tuple[float, float], tuple[float, float], float]) \
+             -> list[tuple[float, float], tuple[float, float], float]:
         """Compute distance between a and b, and add it to distances if within the 20 smaller distances.
         Args:
             coord_a (tuple[float, float]): coord_a abscissa and ordinate
@@ -1983,7 +1986,8 @@ def recherche_de_destinations() -> None:
         Returns:
             list[tuple[float, float], tuple[float, float], float]: list of positions and their distances
         """
-        distance = sqrt((coord_b[0] - coord_a[0]) ** 2 + (coord_b[1] - coord_a[1]) ** 2)
+        distance = sqrt((coord_b[0] - coord_a[0]) **
+                        2 + (coord_b[1] - coord_a[1]) ** 2)
         local_distances.append((coord_a, coord_b, distance))
         local_distances.sort(key=lambda x: x[2])
         if len(local_distances) > 20:
@@ -2011,8 +2015,14 @@ def recherche_de_destinations() -> None:
         for b in liste_num_dest:
             print('{:,.0f} / {:,.0f}'.format(idx, total).replace(',', ' '))
             if a != b:
-                distances = manage_distances(coord_a=a, coord_b=b, local_distances=distances)
+                distances = manage_distances(
+                    coord_a=a, coord_b=b, local_distances=distances)
             idx += 1
+
+    fw = open(file="./recherche_de_destinations/distances.txt", mode="w", encoding="utf-8")
+    for x in distances:
+        fw.write(f"{x}\n")
+    fw.close()
 
     del ZipFile
     print("Terminé.")
