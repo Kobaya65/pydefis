@@ -1969,24 +1969,22 @@ def carte_du_marauder() -> None:
 
 def recherche_de_destinations() -> None:
     """https://pydefis.callicode.fr/defis/C23_RechercheDestinations/txt
-    AB = sqrt((xB - xA)² + (yB - yA)²)
     """
     from zipfile import ZipFile
 
     distances = []
-    # def manage_distances(a: tuple[float, float], b: tuple[float, float], distances: list) -> list:
-
-    def manage_distances(x: tuple[float, float], y: tuple[float, float], local_distances: list[float]) -> list[tuple[float, float], tuple[float, float], float]:
+    def manage_distances(coord_a: tuple[float, float], coord_b: tuple[float, float], local_distances: list[float]) \
+                            -> list[tuple[float, float], tuple[float, float], float]:
         """Compute distance between a and b, and add it to distances if within the 20 smaller distances.
         Args:
-            x (tuple[float, float]): point x abscissa and ordinate
-            y (tuple[float, float]): point y abscissa and ordinate
-            local_distances (list[float]): list of positions and their distances
+            coord_a (tuple[float, float]): coord_a abscissa and ordinate
+            coord_b (tuple[float, float]): coord_b abscissa and ordinate
+            local_distances (list[tuple[float, float], tuple[float, float], float]): list of positions and their distances
         Returns:
             list[tuple[float, float], tuple[float, float], float]: list of positions and their distances
         """
-        distance = sqrt((y[0] - x[0]) ** 2 + (y[1] - x[1]) ** 2)
-        local_distances.append((x, y, distance))
+        distance = sqrt((coord_b[0] - coord_a[0]) ** 2 + (coord_b[1] - coord_a[1]) ** 2)
+        local_distances.append((coord_a, coord_b, distance))
         local_distances.sort(key=lambda x: x[2])
         if len(local_distances) > 20:
             local_distances.pop(len(local_distances) - 1)
@@ -2013,7 +2011,7 @@ def recherche_de_destinations() -> None:
         for b in liste_num_dest:
             print('{:,.0f} / {:,.0f}'.format(idx, total).replace(',', ' '))
             if a != b:
-                distances = manage_distances(a, b, distances)
+                distances = manage_distances(coord_a=a, coord_b=b, local_distances=distances)
             idx += 1
 
     del ZipFile
