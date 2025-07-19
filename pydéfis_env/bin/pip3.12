@@ -1,4 +1,4 @@
-#!/home/kobaya/Python/pydéfis/_venv/bin/python3
+#!/home/kobaya/Python/pydéfis/pydéfis_env/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

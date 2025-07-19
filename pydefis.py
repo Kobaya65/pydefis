@@ -4,6 +4,7 @@ import random
 import string
 import re
 import os.path
+from os import remove
 import datetime
 from locale import setlocale, LC_TIME
 import json
@@ -11,9 +12,19 @@ from math import dist, sqrt
 from time import sleep
 from operator import itemgetter
 import unicodedata
+from os import remove
+from glob import glob
+from zipfile import ZipFile
 
-import requests
-from PIL import Image
+import pandas as pd
+import numpy as np
+
+from zipfile import ZipFile
+from scipy.spatial import cKDTree
+import heapq
+
+# import requests
+# from PIL import Image
 
 
 def lion_nemme() -> str:
@@ -813,10 +824,6 @@ def nombres_riches(mini: int, maxi: int) -> list[int]:
 def message_de_l_espace() -> list[int]:
     """https://pydefis.callicode.fr/defis/C24_Seti/txt
     """
-    import zipfile
-    from os import remove
-    from glob import glob
-
     def detecte_doublons(enregistrements: list[str]) -> int:
         """Detect if characters are duplicated in a string.
         If no duplicates in a string, then it is a "rare sequence".
@@ -857,7 +864,7 @@ def message_de_l_espace() -> list[int]:
     for file in files:
         remove(file)
 
-    with zipfile.ZipFile(my_zip_file, 'r') as zip_ref:
+    with ZipFile(my_zip_file, 'r') as zip_ref:
         zip_ref.extractall(destination_folder)
 
     result = []
@@ -873,8 +880,6 @@ def message_de_l_espace() -> list[int]:
 
         print(f"Fichier {numero_fic}")
         print(result)
-
-    del remove, glob, zipfile
 
     return result
 
@@ -1969,63 +1974,38 @@ def carte_du_marauder() -> None:
 
 def recherche_de_destinations() -> None:
     """https://pydefis.callicode.fr/defis/C23_RechercheDestinations/txt
+    2025-07-19 : non validé
     """
-    from zipfile import ZipFile
+    with ZipFile("./recherche_de_destinations/coordonnees_destinations_300.zip", 'r') as zip_ref:
+        fichier = zip_ref.extract("coordonnees_destinations_300.txt")
 
-    distances = []
+    # 1. Lecture des données depuis un fichier
+    points = np.loadtxt(fname=fichier, delimiter=",")
 
-    def manage_distances(coord_a: tuple[float, float],
-                         coord_b: tuple[float, float],
-                         local_distances: list[tuple[float, float], tuple[float, float], float]) \
-             -> list[tuple[float, float], tuple[float, float], float]:
-        """Compute distance between a and b, and add it to distances if within the 20 smaller distances.
-        Args:
-            coord_a (tuple[float, float]): coord_a abscissa and ordinate
-            coord_b (tuple[float, float]): coord_b abscissa and ordinate
-            local_distances (list[tuple[float, float], tuple[float, float], float]): list of positions and their distances
-        Returns:
-            list[tuple[float, float], tuple[float, float], float]: list of positions and their distances
-        """
-        distance = sqrt((coord_b[0] - coord_a[0]) **
-                        2 + (coord_b[1] - coord_a[1]) ** 2)
-        local_distances.append((coord_a, coord_b, distance))
-        local_distances.sort(key=lambda x: x[2])
-        if len(local_distances) > 20:
-            local_distances.pop(len(local_distances) - 1)
+    # 2. Construction de l'arbre KD
+    tree = cKDTree(points)
 
-        return local_distances
+    # 3. Trouver les 2 plus proches voisins pour chaque point (le point lui-même + le plus proche)
+    distances, indices = tree.query(points, k=2)
 
-    with ZipFile("./recherche_de_destinations/coordonnees_destinations_300.zip", "r") as myzip:
-        a = myzip.namelist()
-        contenu_b = myzip.read(a[0])
+    # 4. Stocker les paires (en ignorant les doublons et soi-même)
+    heap = []
 
-    contenu = contenu_b.decode("utf-8")
-    liste_destinations = contenu.split('\n')
+    for i, (d, j) in enumerate(zip(distances[:, 1], indices[:, 1])):
+        # éviter les doublons
+        if i < j:
+            heapq.heappush(heap, (d, (i, j)))
 
-    liste_num_dest = []
-    for dest in liste_destinations:
-        splt = dest.split(", ")
-        liste_num_dest.append((float(splt[0]), float(splt[1])))
+    # 5. Extraire les 10 paires les plus proches
+    top_10 = heapq.nsmallest(10, heap)
 
-    # sort destinations
-    liste_num_dest.sort(key=lambda x: (x[0], x[1]))
-    total = len(liste_num_dest) ** 2
-    idx = 1
-    for a in liste_num_dest:
-        for b in liste_num_dest:
-            print('{:,.0f} / {:,.0f}'.format(idx, total).replace(',', ' '))
-            if a != b:
-                distances = manage_distances(
-                    coord_a=a, coord_b=b, local_distances=distances)
-            idx += 1
+    # 6. Affichage
+    print("Top 10 des paires les plus proches :")
+    for d, (i, j) in top_10:
+        print(f"{points[j][0]}, {points[j][1]}, {points[i][0]}, {points[i][1]}, ", end="")
 
-    fw = open(file="./recherche_de_destinations/distances.txt", mode="w", encoding="utf-8")
-    for x in distances:
-        fw.write(f"{x}\n")
-    fw.close()
-
-    del ZipFile
-    print("Terminé.")
+    remove(fichier)
+    print("\nTerminé.")
 
 
 if __name__ == "__main__":
