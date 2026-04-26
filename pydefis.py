@@ -1,22 +1,20 @@
 """Challenges from https://pydefis.callicode.fr
 """
-import string
-import re
-import os.path
-from os import remove
 import datetime
-from locale import setlocale, LC_TIME
+from glob import glob
 import json
+from locale import setlocale, LC_TIME
 from math import dist, sqrt
 from operator import itemgetter
-import unicodedata
 from os import remove
-from glob import glob
+import os.path
+import string
+import re
+import unicodedata
 from zipfile import ZipFile
 
 import numpy as np
-from zipfile import ZipFile
-from scipy.spatial import cKDTree
+# from scipy.spatial import cKDTree
 import heapq
 
 
@@ -837,7 +835,7 @@ def message_de_l_espace() -> list[int]:
 
 
 def sa_legende_est_son_anagramme() -> None:
-    """https://pydefis.callicode.fr/defis/NomAnagramme1/txt"""
+    """https://pydefis.callicode.fr/defis/NomAnagramme2/txt"""
     def remove_accents(input_str: str) -> str:
         """Normalized the chain using the form NFD (normalization form decomposition) which breaks down
         the characterized characters into basic characters + accents
@@ -1698,7 +1696,7 @@ def recherche_de_destinations() -> None:
     points = np.loadtxt(fname=fichier, delimiter=",")
 
     # 2. Construction de l'arbre KD
-    tree = cKDTree(points)
+    # tree = cKDTree(points)
 
     # 3. Trouver les 2 plus proches voisins pour chaque point (le point lui-même + le plus proche)
     distances, indices = tree.query(points, k=2)
@@ -1723,5 +1721,29 @@ def recherche_de_destinations() -> None:
     print("\nTerminé.")
 
 
+def l_entretien_de_stage() -> None:
+    """https://pydefis.callicode.fr/defis/C26_Stage/txt
+    validé
+    """
+    nb_12_letters_words = 0
+    nb_words_e_3rd_position = 0
+    nb_words_l_twice = 0
+
+    with ZipFile("l_entretien_de_stage/dictionnaire.zip", "r") as zip_file:
+        with zip_file.open("dictionnaire.txt") as file:
+            for line in file:
+                word = line.decode("utf-8").strip()
+                if len(word) == 12:
+                    nb_12_letters_words += 1
+                if len(word) >= 3 and word[2] == "e":
+                    nb_words_e_3rd_position += 1
+                if word.count("l") == 2:
+                    nb_words_l_twice += 1
+
+    print(f"Nombre de mots de 12 lettres                    : {nb_12_letters_words}")
+    print(f"Nombre de mots avec 'e' à la 3ème position      : {nb_words_e_3rd_position}")
+    print(f"Nombre de mots avec 'l' apparaissant deux fois  : {nb_words_l_twice}")
+
+
 if __name__ == "__main__":
-    recherche_de_destinations()
+    l_entretien_de_stage()
