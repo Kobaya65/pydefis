@@ -2,6 +2,7 @@
 """
 import datetime
 from glob import glob
+import heapq
 import json
 from locale import setlocale, LC_TIME
 from math import dist, sqrt
@@ -10,12 +11,12 @@ from os import remove
 import os.path
 import string
 import re
+from turtle import ycor
 import unicodedata
 from zipfile import ZipFile
 
 import numpy as np
-# from scipy.spatial import cKDTree
-import heapq
+from scipy.spatial import KDTree
 
 
 
@@ -647,7 +648,7 @@ def monnaie() -> str:
 
 def des_lettres_bien_rangees_2() -> int:
     """https://pydefis.callicode.fr/defis/C23_MotsAlpha/txt
-    Wrongly refectored by Copilot !
+    Wrongly refactored by Copilot !
     """
     def load_words(file_path: str) -> list[str]:
         """Load words from file while ignoring those whose length is less than 3.
@@ -1696,7 +1697,7 @@ def recherche_de_destinations() -> None:
     points = np.loadtxt(fname=fichier, delimiter=",")
 
     # 2. Construction de l'arbre KD
-    # tree = cKDTree(points)
+    tree = KDTree(points)
 
     # 3. Trouver les 2 plus proches voisins pour chaque point (le point lui-même + le plus proche)
     distances, indices = tree.query(points, k=2)
@@ -1745,5 +1746,63 @@ def l_entretien_de_stage() -> None:
     print(f"Nombre de mots avec 'l' apparaissant deux fois  : {nb_words_l_twice}")
 
 
+def un_message_des_etoiles_2() -> None:
+    """https://pydefis.callicode.fr/defis/C25_SkyMap02/txt
+    """
+    from PIL import Image, PngImagePlugin
+    from numpy.typing import NDArray
+
+    def diff_in_picture(image: PngImagePlugin.PngImageFile, data: NDArray, data_ref: NDArray) -> None:
+        """Find differences between image_ref and image.
+
+        :param image (PngImagePlugin.PngImageFile): image to browse
+        :param data (NDArray): image as ndarray
+        :param data_ref (NDArray): image_ref as ndarray
+        """
+        for x in range(image.width):
+            for y in range(image.height):
+                if data_ref[y][x][0] != data[y][x][0]:
+                    pixels.append((x, y))
+
+    def build_image() -> NDArray:
+        """Build an image from differences between images and image_ref.
+
+        :return NDArray: the new image as a ndarray
+        """
+        new_image: NDArray = np.zeros((800, 800, 3), dtype=np.uint8)
+        for x in range(800):
+            for y in range(800):
+                if (x, y) in pixels:
+                    new_image[y][x] = [255, 255, 255]
+                else:
+                    new_image[y][x] = [0, 0, 0]
+        return new_image
+
+    result = []
+    pixels = []
+    files = glob("./un_message_des_etoiles_2/*.png")
+    for i, file in enumerate(files):
+        # isolate file name
+        nom_fichier = file.split("/")[-1]
+
+        image = Image.open(file)
+        # convert image to numpy array
+        data = np.asarray(image)
+
+        result.append((nom_fichier, data))
+
+        if i == 0:
+            # keep first image as a ref
+            data_ref = data
+        else:
+            if not np.array_equal(data_ref, data):
+                diff_in_picture(image, data, data_ref)
+
+    new_nd = build_image()
+    new_image = Image.fromarray(new_nd)
+    new_image.save("./un_message_des_etoiles_2/new_image.png") 
+    new_image.show()
+        
+            
 if __name__ == "__main__":
-    l_entretien_de_stage()
+    un_message_des_etoiles_2()
