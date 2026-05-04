@@ -1749,18 +1749,34 @@ def l_entretien_de_stage() -> None:
 def un_message_des_etoiles_2() -> None:
     """https://pydefis.callicode.fr/defis/C25_SkyMap02/txt
     """
-    from PIL import Image, PngImagePlugin
+    from PIL import Image
     from numpy.typing import NDArray
 
-    def diff_in_picture(image: PngImagePlugin.PngImageFile, data: NDArray, data_ref: NDArray) -> None:
+    def load_images() -> list[tuple[str, Image.Image, NDArray]]:
+        """Load images."""
+        all_data = []
+        files = glob("./un_message_des_etoiles_2/telescope_img*.png")
+        for i, file in enumerate(files):
+            # isolate file name
+            nom_fichier = file.split("/")[-1]
+            image = Image.open(file)
+            # convert image to numpy array
+            data = np.asarray(image)
+
+            all_data.append((nom_fichier, image, data))
+
+        return all_data
+
+    def diff_in_picture(width: int, height: int , data: NDArray, data_ref: NDArray) -> None:
         """Find differences between image_ref and image.
 
-        :param image (PngImagePlugin.PngImageFile): image to browse
+        :param width (int): width of the image
+        :param height (int): height of the image
         :param data (NDArray): image as ndarray
         :param data_ref (NDArray): image_ref as ndarray
         """
-        for x in range(image.width):
-            for y in range(image.height):
+        for x in range(width):
+            for y in range(height):
                 if data_ref[y][x][0] != data[y][x][0]:
                     pixels.append((x, y))
 
@@ -1778,31 +1794,20 @@ def un_message_des_etoiles_2() -> None:
                     new_image[y][x] = [0, 0, 0]
         return new_image
 
-    result = []
-    pixels = []
-    files = glob("./un_message_des_etoiles_2/*.png")
-    for i, file in enumerate(files):
-        # isolate file name
-        nom_fichier = file.split("/")[-1]
+    all_data = load_images()
+    for j in range(len(all_data)):
+        data_ref = all_data[j][2]
+        pixels = []
+        for i, (_, image, data) in enumerate(all_data):
+            if i != j:
+                if not np.array_equal(data_ref, data):
+                    diff_in_picture(image.width, image.height, data, data_ref)
 
-        image = Image.open(file)
-        # convert image to numpy array
-        data = np.asarray(image)
+        new_nd = build_image()
+        new_image = Image.fromarray(new_nd)
+        new_image.save(f"./un_message_des_etoiles_2/results/new_image_{j:03d}.png") 
+        # new_image.show()
 
-        result.append((nom_fichier, data))
-
-        if i == 0:
-            # keep first image as a ref
-            data_ref = data
-        else:
-            if not np.array_equal(data_ref, data):
-                diff_in_picture(image, data, data_ref)
-
-    new_nd = build_image()
-    new_image = Image.fromarray(new_nd)
-    new_image.save("./un_message_des_etoiles_2/new_image.png") 
-    new_image.show()
-        
-            
+     
 if __name__ == "__main__":
     un_message_des_etoiles_2()
