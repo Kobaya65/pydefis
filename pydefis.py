@@ -1748,6 +1748,7 @@ def l_entretien_de_stage() -> None:
 
 def un_message_des_etoiles_2() -> None:
     """https://pydefis.callicode.fr/defis/C25_SkyMap02/txt
+    Presque résolu : image trouvée, mais non interprétée...
     """
     from PIL import Image
     from numpy.typing import NDArray
@@ -1808,6 +1809,49 @@ def un_message_des_etoiles_2() -> None:
         new_image.save(f"./un_message_des_etoiles_2/results/new_image_{j:03d}.png") 
         # new_image.show()
 
-     
+
+def brouillage_de_numeros_de_telephones() -> None:
+    """https://pydefis.callicode.fr/defis/C23_BrouillagePhone/txt
+    A faire tourner en totalité pour avoir le résultat souhauté.
+    20260516 : pas encore validé
+    """
+    # 1. Charger le dictionnaire
+    with open("brouillage_de_numeros_de_telephones/dico.txt", encoding="utf-8") as f:
+        mots = [m.rstrip("\n").upper() for m in f if m.strip()]
+
+    cadran = {
+        2: "ABC",
+        3: "DEF",
+        4: "GHI",
+        5: "JKL",
+        6: "MNO",
+        7: "PQRS",
+        8: "TUV",
+        9: "WXYZ"
+    }
+
+    # 2. Test de compatibilité mot ↔ numéro
+    def mot_valide(mot, numero):
+        if len(mot) != len(numero):
+            return False
+        for lettre, chiffre in zip(mot, numero):
+            if lettre not in cadran.get(chiffre, ""):
+                return False
+        return True
+
+    # 3. Fonction principale
+    def trouver_mots(numero):
+        return [m for m in mots if mot_valide(m, numero)]
+
+    # Exemple
+    numero = 222222222
+    for i in range(numero, 1000000000):
+        resultats = trouver_mots(str(i))
+        if i % 100 == 0:
+            print(i)
+        if resultats:
+            print(f"{i:>5} {resultats}")
+
+
 if __name__ == "__main__":
-    un_message_des_etoiles_2()
+    brouillage_de_numeros_de_telephones()
