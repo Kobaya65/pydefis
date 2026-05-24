@@ -1820,38 +1820,95 @@ def brouillage_de_numeros_de_telephones() -> None:
         mots = [m.rstrip("\n").upper() for m in f if m.strip()]
 
     cadran = {
-        2: "ABC",
-        3: "DEF",
-        4: "GHI",
-        5: "JKL",
-        6: "MNO",
-        7: "PQRS",
-        8: "TUV",
-        9: "WXYZ"
+        2: ["A", "B", "C"],
+        3: ["D", "E", "F"],
+        4: ["G", "H", "I"],
+        5: ["J", "K", "L"],
+        6: ["M", "N", "O"],
+        7: ["P", "Q", "R", "S"],
+        8: ["T", "U", "V"],
+        9: ["W", "X", "Y", "Z"]
     }
 
-    # 2. Test de compatibilité mot ↔ numéro
-    def mot_valide(mot, numero):
-        if len(mot) != len(numero):
-            return False
-        for lettre, chiffre in zip(mot, numero):
-            if lettre not in cadran.get(chiffre, ""):
-                return False
-        return True
+    def creer_numero(mot: str) -> str:
+        """Créer un numéro de téléphone à partir d'un mot.
+        
+        :param mot (str): le mot à transformer
+        :return (str): le numéro de téléphone correspondant au mot
+        """
+        numero = ""
+        for lettre in mot:
+            for chiffre, lettres in cadran.items():
+                if lettre in lettres:
+                    numero += str(chiffre)
+                    break
 
-    # 3. Fonction principale
-    def trouver_mots(numero):
-        return [m for m in mots if mot_valide(m, numero)]
+        return numero
 
-    # Exemple
-    numero = 222222222
-    for i in range(numero, 1000000000):
-        resultats = trouver_mots(str(i))
-        if i % 100 == 0:
-            print(i)
-        if resultats:
-            print(f"{i:>5} {resultats}")
+    def tableau_mots_numeros() -> dict[str, list[str]]:
+        data = {}
+        for mot in mots:
+            numero = creer_numero(mot)
+            if numero in data:
+                data[numero].append(mot)
+            else:
+                data[numero] = [mot]
+
+        return data
+
+    # obtenir un tableau de tous les mots et de leurs numéros de téléphone correspondants
+    tableau = tableau_mots_numeros()
+    # compter le nombre de mots par numéro, et trier par ordre décroissant
+    sorted_tableau = dict(sorted(tableau.items(), key=lambda item: len(item[1]), reverse=True))
+    
+    max_mots = len(next(iter(sorted_tableau.values())))
+    resultat = [num for num in sorted_tableau if len(sorted_tableau[num]) == max_mots]
+    print(resultat)
+
+
+def un_message_bien_enfoui() -> None:
+    """https://pydefis.callicode.fr/defis/MessageGPS/txt
+    résolu le 24/05/2026 : 15:57
+    """
+    with open(file="./un_message_bien_enfoui/data.txt", mode="r", encoding="utf-8") as f:
+        coordonnees = f.readlines()
+
+    result = []
+    for coord in coordonnees:
+        lat, long = coord.strip().split(" ")
+        somme_lat = sum(int(c) for c in lat if c.isdigit())
+        somme_long = sum(int(c) for c in long if c.isdigit())
+        if (somme_lat % 13 == 0) and (somme_long % 13 == 0):
+            result.append((float(lat), float(long)))
+
+    for x, coord in enumerate(result, 1):
+        print(f"{x:>2} : {coord[0]}, {coord[1]}")
+
+
+def mosaique_de_photos() -> None:
+    """https://pydefis.callicode.fr/defis/EspionMosaic/txt
+    résolu le24/05/2026 : opéra de Sydney
+    """
+    from PIL import Image
+
+    with open(file="./mosaique_de_photos/input.txt", mode="r", encoding="utf-8") as f:
+        coordonnees = f.readlines()
+
+    result = []
+    for coord in coordonnees:
+        x, y, num_image = coord.strip().split(", ")
+        result.append((int(x), int(y), int(num_image)))
+
+    result.sort(key=lambda t: (t[0], t[1], t[2]))
+
+    # nouvelle image
+    dst = Image.new('RGB', (3424, 5728))
+    for idx, i in enumerate(result, 1):
+        im1 = Image.open(f"./mosaique_de_photos/{i[2]:03d}.jpeg")
+        dst.paste(im1, (i[0] * 32, i[1] * 32))
+
+    dst.show()
 
 
 if __name__ == "__main__":
-    brouillage_de_numeros_de_telephones()
+    mosaique_de_photos()
