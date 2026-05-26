@@ -11,7 +11,6 @@ from os import remove
 import os.path
 import string
 import re
-from turtle import ycor
 import unicodedata
 from zipfile import ZipFile
 
@@ -1009,7 +1008,6 @@ def le_message_pour_queulorior() -> None:
     ESOOEEENNEESOOESEENNSSEENNSSENNESNESSENNEEOOSEOSEEENNSSE
     ENNSSEEENOONEEOOSEESENNEEOOSEOSEEEEEENNEESSOOEEENNEEOOSE
     OSEEENNESNESSENNEESOOEESENNSSENNESENSS"""
-    import tkinter
     import turtle
 
     turtle.teleport(-800, 0)
@@ -1685,7 +1683,6 @@ def la_chambre_des_pairs() -> None:
             print(f"Plus longue séquence = {seq}")
 
 
-
 def recherche_de_destinations() -> None:
     """https://pydefis.callicode.fr/defis/C23_RechercheDestinations/txt
     2025-07-19 : non validé
@@ -1910,5 +1907,64 @@ def mosaique_de_photos() -> None:
     dst.show()
 
 
+def sw_vii_detection_des_stormtroopers_compatissants() -> None:
+    """https://pydefis.callicode.fr/defis/DetectionStormTrooper/txt
+    résolu le 25/05/2026
+    """
+    from itertools import combinations
+
+    # list of numbers
+    nombres = list(range(1, 1001))
+    # all products of 2 different numbers in the list, with their factors,
+    # and only those with a product of 4 digits
+    produits = [(a * b, a, b) for a, b in combinations(nombres, 2) if len(str(a * b)) == 4]
+    produits = sorted(produits, key=lambda x: x[0])
+
+    result = []
+    for x in produits:
+        x_str = sorted(str(x[0]))
+        i = str(x[1])
+        j = str(x[2])
+        combined = sorted(i + j)
+        if x_str == combined:
+            result.append(x[0])
+
+    resultat = ""
+    for x in result:
+        resultat += f"{x},"
+    # print result without trailing comma
+    print(resultat[:-1])
+
+
+def sw_vi_sur_la_lune_d_endor() -> None:
+    """https://pydefis.callicode.fr/defis/RollingCodes/txt
+    """
+    def check_code(code_precedent: int, code_propose: int) -> int:
+        rounds = 20
+        code = code_propose
+        for _ in range(rounds):
+            code = (code * 5231) % 999671
+
+        if code == code_precedent:
+            return 1
+        else:
+            return 0
+    
+    code_propose = 0
+    res = 0
+    while res != 1:
+        code_propose += 1
+        res = check_code(480401, code_propose)
+        print(f"{code_propose:>6} {res}")
+
+    print(f"Solution : {code_propose}")
+
+    print("check_code(515020, 766875)", check_code(515020, 766875))
+    print("check_code(766875, 567123)", check_code(766875, 567123))
+    print("check_code(480401, 226719)", check_code(480401, 226719))
+    print("check_code(480401, 226720)", check_code(480401, 226720))
+    print("check_code(480401, 226721)", check_code(480401, 226721))
+
+
 if __name__ == "__main__":
-    mosaique_de_photos()
+    sw_vi_sur_la_lune_d_endor()
