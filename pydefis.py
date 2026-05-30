@@ -23,8 +23,11 @@ def lion_nemme() -> str:
     """https://pydefis.callicode.fr/defis/Herculito01Lion/txt
     """
     def valeur(divinite: str) -> int:
-        """Compute value of a word from its letters
+        """Compute value of a word from its letters.
         A=1, B=2, C=3, etc.
+
+        :param divinite (str): word to evaluate
+        :return (str): value of the word
         """
         somme = 0
         for lettre in divinite.upper():
@@ -50,7 +53,9 @@ def lion_nemme() -> str:
 
 def hen_llinge_obfusque(message: str) -> str:
     """https://pydefis.callicode.fr/defis/C22_Obfuscate01/txt
-    - message: message to decrypt
+
+    :param message (str): message to decrypt
+    :return (str): decrypted message
     """
     message_nettoye = message
     l_avant, l_apres = 0, 1
@@ -67,7 +72,9 @@ def hen_llinge_obfusque(message: str) -> str:
 
 def lapin_cretin(phrase: str) -> str:
     """https://pydefis.callicode.fr/defis/C22_BwaCode01/txt
-    - phrase: text to decrypt
+
+    :param phrase (str): text to decrypt
+    :return (str): decrypted text
     """
     result = re.sub(pattern="BWA.A", repl="", string=phrase)
 
@@ -76,8 +83,9 @@ def lapin_cretin(phrase: str) -> str:
 
 def sudokteur(tableau: str) -> str:
     """https://pydefis.callicode.fr/defis/C23_Sudokteur/txt
-    - tableau: digit array to analyze\n
-    Return a string
+
+    :param tableau (str): digit array to analyze
+    :return (str): resulting string
     """
     chiffres = {}
     for i in string.digits:
@@ -93,7 +101,8 @@ def sudokteur(tableau: str) -> str:
 
 def pestage_ascii_art() -> None:
     """https://pydefis.callicode.fr/defis/PestageAsciiArt/txt
-    The source file, stored in the subfolder /pestage_ascii_art/, must end with a /n, otherwise a bug will be raised.
+    The source file, stored in the subfolder /pestage_ascii_art/,
+    must end with a /n, otherwise a bug will be raised.
     The output files will also be stored in /pestage_ascii_art/.
     """
     EMPTY_STRING = ""
@@ -101,13 +110,16 @@ def pestage_ascii_art() -> None:
     if os.path.isdir("./pestage_ascii_art/"):
         try:
             # store input data in a list
-            with open(file="./pestage_ascii_art/pestage_ascii_art.txt", mode="r", encoding="utf-8") as f:
+            with open(file="./pestage_ascii_art/pestage_ascii_art.txt",
+                       mode="r", encoding="utf-8") as f:
                 pestage = f.readlines()
-        except FileExistsError as e:
-            raise e(
-                "Error: 'pestage_ascii_art.txt' not found in './pestage_ascii_art/'.")
+        except FileNotFoundError:
+            raise Exception("Error: "
+                  "'pestage_ascii_art.txt' not found in "
+                  "'./pestage_ascii_art/'."
+            )
         except Exception as g:
-            raise g(f"{g.__str__()}.")
+            raise Exception(f"{g.__str__()}.")
     else:
         raise IsADirectoryError(
             "Error: no subfolder '/pestage_ascii_art/' found.")
@@ -169,13 +181,16 @@ def les_hybrides_s01e09() -> str:
 
 def mots_alpha() -> int:
     """https://pydefis.callicode.fr/defis/C23_MotsAlpha/txt
-    Return number of words having letters alphabetically ordered
+
+    :return (int): number of words having letters alphabetically ordered
     """
     def analyse_mot(mots_alpha: list[str | None], mot: str) -> list[str]:
         """Test if letters of mot are in alphabetical order.
-        - mots_alpha : list of words having letters alphabetically ordered
-        - mot : word to analyse/n
-        Return list of words having letters alphabetically ordered
+
+        :param mots_alpha (list[str] | None): list of words
+        :param mot (str): word to analyse
+        :return (list[str]): list of words having
+            letters alphabetically ordered
         """
         res = 1
         compare = list(mot.lower())
@@ -335,11 +350,17 @@ def un_mail_anodin() -> str:
 
 def insaisissable_matrice(etapes: int) -> int:
     """https://pydefis.callicode.fr/defis/AlgoMat/txt
+
+    :param etapes (int): number of times to apply
+        the formula to each element of the matrix
+    :return (int): sum of the resulting matrix after applying
+        the formula etapes times to each element
     """
     def formule(nombre: int) -> int:
         """Formula to be applied to nombre.
-        - nombre: integer on which to apply formula\n
-        Return computed value
+
+        :param nombre (int): integer on which to apply formula
+        :return (int): computed value
         """
         return (9 * nombre + 3) % 19
 
@@ -427,8 +448,9 @@ def mon_beau_miroir() -> str:
     """
     def palidrome(nombre: int) -> bool:
         """Check if nombre is a palindrom.
-        - nombre: number to check
-        Return boolean
+
+        :param nombre (int): number to check
+        :return (bool): True if nombre is a palindrome, False otherwise
         """
         mirror = str(nombre)[::-1]
         return str(nombre) == mirror
@@ -460,9 +482,11 @@ def ocean_liquide_mimas() -> None:
     """
     def minimums(profondeurs: list[float], prof_min: float) -> tuple[int, int]:
         """Find minimum of ligne and colonne.
-        - profondeurs: list of depths
-        - prof_min: minimum depth to search for\n
-        Return row and column indexes where prof_min has been found
+
+        :param profondeurs (list[float]): list of depths
+        :param prof_min (float): minimum depth to search for
+        :return (tuple[int, int]): row and column indexes
+            where prof_min has been found
         """
         for ligne in range(1, hauteur - 1):
             for colonne in range(1, largeur - 1):
@@ -481,7 +505,6 @@ def ocean_liquide_mimas() -> None:
         return min_ligne, min_colonne
 
 
-
 def surveillance() -> str:
     """https://pydefis.callicode.fr/defis/C24_Surveillance_1/txt
     """
@@ -492,8 +515,6 @@ def surveillance() -> str:
     coordonnees = []
     for x in donnees:
         coordonnees.append([int(x.split(", ")[0]), int(x.split(", ")[1])])
-
-    del x, donnees, f
 
     # compute distances between agents
     surveil = []
@@ -522,8 +543,11 @@ def surveillance() -> str:
     return resultat[:-2]
 
 
-def analyse_de_sequences_1_2() -> int:
+def analyse_de_sequences_1_2() -> str:
     """https://pydefis.callicode.fr/defis/C24_AcidesNucleiques_01/txt
+
+    :return (str): last 5 digits of the number of sequences
+        that can be generated
     """
     symboles = {
         "A": ["A"],
@@ -553,16 +577,19 @@ def analyse_de_sequences_1_2() -> int:
 
 def analyse_de_sequences_2_2() -> int:
     """https://pydefis.callicode.fr/defis/C24_AcidesNucleiques_02/txt
+
+    :param (int): number of sequences that match the motif
     """
     def corresp(sequence: str) -> int:
         """Check if sequence matches motif.
-        - sequence: sequence to decrypt\n
-        Return 0 if sequence doesn't match motif, else 1
+
+        :param sequence: sequence to decrypt\n
+        :return (bool): False if sequence doesn't match motif, else True
         """
-        result = 1
+        result = True
         for idx, lettre in enumerate(sequence):
             if lettre not in symboles[motif[idx]]:
-                result = 0
+                result = False
                 break
 
         return result
@@ -585,6 +612,8 @@ def analyse_de_sequences_2_2() -> int:
 
 def des_lettres_bien_rangees() -> int:
     """https://pydefis.callicode.fr/defis/C23_MotsAlpha/txt
+
+    :return (int): number of words having letters alphabetically ordered
     """
     with open('./des_lettres_bien_rangees/dico_accentues.json', mode="r", encoding="utf-8") as f:
         dico_accentues = json.load(f)
@@ -619,6 +648,9 @@ def des_lettres_bien_rangees() -> int:
 
 def monnaie() -> str:
     """https://pydefis.callicode.fr/defis/Monnaie/txt
+
+    :return (str): number of pieces of each type used
+        to reimburse the amounts in the list
     """
     pieces = (50, 20, 10, 5, 2, 1)
     pieces_utilisees = [0, 0, 0, 0, 0, 0]
@@ -648,11 +680,14 @@ def monnaie() -> str:
 def des_lettres_bien_rangees_2() -> int:
     """https://pydefis.callicode.fr/defis/C23_MotsAlpha/txt
     Wrongly refactored by Copilot !
+
+    :return (int): number of words having letters alphabetically ordered
     """
     def load_words(file_path: str) -> list[str]:
         """Load words from file while ignoring those whose length is less than 3.
-        - file_path: path to file\n
-        Return list of words
+
+        :param file_path (str): path to file
+        :return (list[str]): list of words
         """
         with open(file_path, mode="r", encoding="utf-8") as f:
             words = f.readlines()
@@ -660,9 +695,10 @@ def des_lettres_bien_rangees_2() -> int:
 
     def normalize_word(word: str, accent_map: dict[str, str]) -> str:
         """Normalize word by removing accents and converting to lowercase.
-        - word: word to normalize
-        - accent_map: dictionary of accents to remove
-        Return normalized word
+
+        :param word (str): word to normalize
+        :param accent_map (dict[str, str]): dictionary of accents to remove
+        :return (str): normalized word
         """
         normalized = ""
         for char in word:
@@ -674,8 +710,10 @@ def des_lettres_bien_rangees_2() -> int:
 
     def is_alphabetical(word: str) -> bool:
         """Check if letters of word are in alphabetical order.
-        - word: word to analyze
-        Return boolean
+
+        :param word (str): word to analyze
+        :return (bool): True if letters are in alphabetical order,
+            False otherwise
         """
         for i in range(1, len(word)):
             if word[i] < word[i - 1]:
@@ -701,13 +739,19 @@ def des_lettres_bien_rangees_2() -> int:
 
 def persistance(nombre_1: int, nombre_2: int) -> list[int]:
     """https://pydefis.callicode.fr/defis/Persistance/txt
+
+    :param nombre_1 (int): lower bound of the range to analyze
+    :param nombre_2 (int): upper bound of the range to analyze
+    :return (list[int]): list of the count of numbers having each persistence
+        value from 1 to 9, where the index of the list corresponds to the persistence value
     """
     result = [0] * 10
 
     def calcul_persistance(nombre: int) -> int:
         """Calculate the persistence of a number.
-        - nombre: number to analyze\n
-        Return persistence
+
+        :param nombre (int): number to analyze\n
+        :return persistence (int): persistence of the number
         """
         while nombre > 9:
             produit = 1
@@ -743,11 +787,18 @@ def exemple_url_1() -> None:
 
 def nombres_riches(mini: int, maxi: int) -> list[int]:
     """https://pydefis.callicode.fr/defis/NombresRiches/txt
+
+    :param mini (int): lower bound of the range to analyze
+    :param maxi (int): upper bound of the range to analyze
+    :return (list[int]): list of numbers in the range that
+        contain all digits from 1 to 9 in their square and cube
     """
     def tous_les_chiffres(chiffres: list[int]) -> bool:
         """Check if all digits are present in chiffres.
-        - chiffres: list of digits\n
-        Return boolean
+
+        :param chiffres list[int]: list of digits
+        :return (boolean): True if all digits from 1 to 9
+            are present in chiffres, False otherwise
         """
         for chiffre in chiffres:
             if chiffre == 0:
@@ -773,12 +824,15 @@ def nombres_riches(mini: int, maxi: int) -> list[int]:
 
 def message_de_l_espace() -> list[int]:
     """https://pydefis.callicode.fr/defis/C24_Seti/txt
+
+    :return (list[int]): list of file numbers that contain a "rare sequence"
     """
     def detecte_doublons(enregistrements: list[str]) -> int:
         """Detect if characters are duplicated in a string.
         If no duplicates in a string, then it is a "rare sequence".
-        - enregistrements: list of strings\n
-        Returns number of rare sequences in enregistrements
+
+        :param enregistrements (list|str): list of strings
+        :return (int): number of rare sequences in enregistrements
         """
         nb_sequences_rares = 0
         for sequence in enregistrements:
@@ -791,8 +845,10 @@ def message_de_l_espace() -> list[int]:
 
     def analyse_bloc_4_lettres(sequence: str) -> dict[str, int]:
         """Analyse a sequence of 4 letters.
-        - sequence: string of 15 letters\n
-        Returns a dictionary of 4-letter words with their count of unique letters
+
+        :param sequence (str): string of 15 letters\n
+        :return (dict[str, int]): a dictionary of 4-letter words
+            with their count of unique letters
         """
         mots = {}
         for i in range(len(sequence) - 4):
@@ -837,12 +893,12 @@ def message_de_l_espace() -> list[int]:
 def sa_legende_est_son_anagramme() -> None:
     """https://pydefis.callicode.fr/defis/NomAnagramme2/txt"""
     def remove_accents(input_str: str) -> str:
-        """Normalized the chain using the form NFD (normalization form decomposition) which breaks down
+        """Normalized the chain using the form NFD
+        (normalization form decomposition) which breaks down
         the characterized characters into basic characters + accents
-        Args:
-            input_str (str): string to process
-        Returns:
-            str: processed string
+
+        :param input_str (str): string to process
+        :return (str): processed string
         """
         normalized_str = unicodedata.normalize('NFD', input_str)
         # remove all characters of category "Mn" (Mark, Nonspacing), which are accents,
@@ -892,11 +948,10 @@ def sequence_cesar() -> None:
     """https://pydefis.callicode.fr/defis/Sequence_Cesar/txt"""
     def decode_cesar(seq: str, dec: int) -> str:
         """Returns seq shifted by dec.
-        Args:
-            seq (str): sequence to be shifted
-            dec (int): number of shift
-        Returns:
-            str: shifted sequence
+
+        :param seq (str): sequence to be shifted
+        :param dec (int): number of shift
+        :return (str): shifted sequence
         """
         res = ""
         for l in seq:
@@ -926,11 +981,10 @@ def le_sanglier_d_erymanthe() -> None:
     """https://pydefis.callicode.fr/defis/Herculito04Sanglier/txt"""
     def calcul(point_haut: int, point_bas: int) -> int:
         """Compute number of throwed stones.
-        Args:
-            point_haut (int): higher altitude
-            point_bas (int): lower altitude
-        Returns:
-            int: number of throwed stones
+
+        :param point_haut (int): higher altitude
+        :param point_bas (int): lower altitude
+        :return (int): number of throwed stones
         """
         return int((point_haut - point_bas) / 10) + 1
 
@@ -981,9 +1035,9 @@ def desamorcage_a_la_tony_stark() -> None:
     """https://pydefis.callicode.fr/defis/SpymasterBomb/txt"""
     def multiple(chiffre: int) -> int:
         """Check if chiffre is a multiple of 3 or 5.
-        Args:
-            chiffre (int): number to test
-        Returns: chiffre if multiple of 3 or 5, otherwise 0
+
+        :param chiffre (int): number to test
+        :return (int): chiffre if multiple of 3 or 5, otherwise 0
         """
         res = (chiffre / 3 == chiffre // 3) or (chiffre / 5 == chiffre // 5)
         return chiffre if res else 0
@@ -1047,11 +1101,10 @@ def les_victimes_de_tooms_1() -> None:
     """https://pydefis.callicode.fr/defis/C24_DentToomsEasy/txt"""
     def multiple(dt: list[float], dif: float) -> bool:
         """Check if dt is a kind of multiple of tooms.
-        Args:
-            dt (list[float]): toothprint
-            dif (float): difference between first elements
-        Returns:
-            bool: True if it's a Tooms' toothprint otherwise False
+
+        :param dt (list[float]): toothprint
+        :param dif (float): difference between first elements
+        :return (bool): True if it's a Tooms' toothprint otherwise False
         """
         res = True
         for idx, val in enumerate(dt):
@@ -1085,14 +1138,14 @@ def les_victimes_de_tooms_1() -> None:
 
 def meli_melo_d_adresses() -> str:
     """https://pydefis.callicode.fr/defis/C24_HashNewton/txt
-    Returns:
-        str: adresse
+
+    :return (str): adresse
     """
     def encode_adr(adresse: str) -> str:
         """Encode adresse counting numbers of occurences of each letter.
-        Args:
-            adresse (str): address to encode
-        Returns adresse encoded
+
+        :param adresse (str): address to encode
+        :return (str): encoded address
         """
         dico_lettres = {}
         for l in adresse:
@@ -1120,7 +1173,9 @@ def meli_melo_d_adresses() -> str:
 
         encoded_adr = encode_adr(adresses[idx])
         if encoded_adr == entree:
-            return adresses[idx]
+           break
+
+    return adresses[idx]
 
 
 def le_jour_de_la_serviette() -> None:
@@ -1147,11 +1202,11 @@ def le_jour_de_la_serviette() -> None:
         f.close()
 
     def find_max_4(list_tuples: list) -> tuple[int, int, int]:
-        """Which tuple in list_tuples is the one for which the three numbers most often contain the number 4?
-        Args:
-            list_tuples (list): list of tuples
-        Returns:
-            tuple[int, int, int]: the three numbers
+        """Which tuple in list_tuples is the one for which
+            the three numbers most often contain the number 4.
+
+        :param list_tuples (list): list of tuples
+        :return (tuple[int, int, int]): the three numbers
         """
         max_4 = 0
         max_tuple = ()
@@ -1197,18 +1252,15 @@ def l_enregistreur_cache_1() -> None:
     # simple export
     _ = overlay_1.export("output.wav", format="wav")
 
-    del wave
-    del AudioSegment
 
-
-def l_ordre_66_ne_vaut_pas_66() -> bool:
+def l_ordre_66_ne_vaut_pas_66() -> None:
     """https://pydefis.callicode.fr/defis/Ordre66/txt"""
     def impairs(nombre: int) -> bool:
         """Checks if nombre contains only odd figures.
-        Args:
-            nombre (int): number to check
-        Returns:
-            bool: True if nombre contains only odd figure, otherwise False
+
+        :param nombre (int): number to check
+        :return (bool): True if nombre contains only odd figure,
+            otherwise False
         """
         nombre_str = str(nombre)
         impair = True
@@ -1221,11 +1273,12 @@ def l_ordre_66_ne_vaut_pas_66() -> bool:
         return impair
 
     def plus_petit(nombre: int) -> bool:
-        """Checks if every figure of nombre is strictly smaller than the next one.
-        Args:
-            nombre (int): number to check
-        Returns:
-            bool: True if nombre contains only odd figure, otherwise False
+        """Checks if every figure of nombre is strictly 
+            smaller than the next one.
+        
+        :param nombre (int): number to check
+        :return (bool): True if nombre contains only odd figure,
+            otherwise False
         """
         nombre_str = str(nombre)
         plus_petit = True
@@ -1238,11 +1291,12 @@ def l_ordre_66_ne_vaut_pas_66() -> bool:
         return plus_petit
 
     def produit_pair(nombre: int) -> bool:
-        """Checks if the product of figures in nombre only contains odd figures.
-        Args:
-            nombre (int): number to check
-        Returns:
-            bool: True if product of figures in nombre only contains odd figures
+        """Checks if the product of figures in nombre
+            only contains odd figures.
+
+        :param nombre (int): number to check
+        :return (bool): True if product of figures in nombre
+            only contains odd figures
         """
         nombre_str = str(nombre)
         produit = 1
@@ -1261,10 +1315,10 @@ def l_ordre_66_ne_vaut_pas_66() -> bool:
 
     def somme_pair(nombre: int) -> bool:
         """Checks if the sum of figures in nombre only contains odd figures.
-        Args:
-            nombre (int): number to check
-        Returns:
-            bool: True if sum of figures in nombre only contains odd figures
+
+        :param nombre (int): number to check
+        :return (bool): True if sum of figures in nombre only contains
+            odd figures otherwise False
         """
         nombre_str = str(nombre)
         somme = 0
@@ -1751,7 +1805,11 @@ def un_message_des_etoiles_2() -> None:
     from numpy.typing import NDArray
 
     def load_images() -> list[tuple[str, Image.Image, NDArray]]:
-        """Load images."""
+        """Load images.
+
+        :return (list[tuple[str, Image.Image, NDArray]]):
+            list of tuples containing file name, image and image as ndarray
+        """
         all_data = []
         files = glob("./un_message_des_etoiles_2/telescope_img*.png")
         for i, file in enumerate(files):
