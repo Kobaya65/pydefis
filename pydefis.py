@@ -1996,6 +1996,8 @@ def sw_vii_detection_des_stormtroopers_compatissants() -> None:
 
 def sw_vi_sur_la_lune_d_endor() -> None:
     """https://pydefis.callicode.fr/defis/RollingCodes/txt
+    code proposé 226720, qui est validé par la fonction,
+    mais non validé par le site...
     """
     def check_code(code_precedent: int, code_propose: int) -> int:
         rounds = 20
@@ -2021,8 +2023,126 @@ def sw_vi_sur_la_lune_d_endor() -> None:
     print("check_code(766875, 567123)", check_code(766875, 567123))
     print("check_code(480401, 226719)", check_code(480401, 226719))
     print("check_code(480401, 226720)", check_code(480401, 226720))
-    print("check_code(480401, 226721)", check_code(480401, 226721))
+    print("check_code(480400, 226720)", check_code(480400, 226720))
+    print("check_code(480402, 226720)", check_code(480402, 226720))
+
+
+def bwa():
+    """https://pydefis.callicode.fr/defis/C22_BwaCode02/txt
+    mots uniques : BWAA BWAHA BWA
+    Solution : prendre la combi 6, soit
+    BWAA BWA BWAHA BWAA BWA BWAA BWAHA BWAA BWA BWAHA BWAA BWAHA
+    """
+    def build_alpha(alphabet: str,
+                    alpha_lapin: list[str], reverse: bool=False) -> dict[str, str]:
+        """Build a dictionary to translate bwa code to letter.
+
+        :param alphabet (str): the alphabet to use for translation
+        :param alpha_lapin (list[str]): the list of codes to translate
+        :return (dict[str, str]): the dictionary to translate code to letter
+        """
+        transduc = {}
+        for i in range(27):
+            transduc[alpha_lapin[i]] = alphabet[i]
+
+        # when we need to translate letter to code, we reverse the dictionary
+        if reverse:
+            transduc = {v: k for k, v in transduc.items()}
+
+        return transduc
+
+    def build_bwa_word(word: str, characters_base: str, alpha_lapin: list[str], combinaison: dict[str, int]) -> str:
+        """Build a word in bwa code.
+
+        :param word (str): the word to translate
+        :param characters_base (str): the base characters to use for translation
+        :param alpha_lapin (list[str]): the list of codes to translate
+        :param combinaison (dict[str, int]): the combinaison to use for translation
+        :return (str): the word in bwa code
+        """
+        # reverse dictionary
+        combinaison_reversed = {v: k for k, v in combinaison.items()}
+
+        transduc = build_alpha(characters_base, alpha_lapin, True)
+        bwa_word = ""
+        for lettre in word:
+            bwa_number = transduc[lettre]
+            for figure in bwa_number:
+                bwa_word += f"{combinaison_reversed[int(figure)]} "
+
+        return bwa_word[:-1]
+
+    message = """BWA BWA BWAA BWAHA BWAA BWA BWAHA BWAHA BWAA BWAHA BWA BWAHA BWAHA BWAA BWA BWAA
+BWAHA BWA BWAA BWA BWA BWA BWA BWA BWAA BWA BWAA BWAA BWAHA BWA BWA BWA BWA BWAA
+BWAHA BWAHA BWA BWAHA BWAA BWAA BWAHA BWA BWAA BWAA BWA BWA BWA BWA BWAHA BWA
+BWAHA BWAHA BWAA BWA BWAA BWAHA BWA BWA BWAHA BWAA BWAA BWA BWA BWA BWA BWA BWA
+BWA BWAHA BWAA BWAHA BWAHA BWA BWAHA BWAA BWA BWAHA BWA BWA BWA BWA BWAHA BWAHA
+BWAHA BWAHA BWAA BWA BWAHA BWA BWA"""
+    message_mots = message.split()
+
+    combinaisons = {
+        1: {
+            "BWAA": 0,
+            "BWAHA": 1,
+            "BWA": 2
+        },
+        2: {
+            "BWAA": 0,
+            "BWAHA": 2,
+            "BWA": 1
+        },
+        3: {
+            "BWAA": 1,
+            "BWAHA": 0,
+            "BWA": 2
+        },
+        4: {
+            "BWAA": 1,
+            "BWAHA": 2,
+            "BWA": 0
+        },
+        5: {
+            "BWAA": 2,
+            "BWAHA": 0,
+            "BWA": 1
+        },
+        6: {
+            "BWAA": 2,
+            "BWAHA": 1,
+            "BWA": 0
+        },
+    }
+    alpha_lapin = [
+        "000", "001", "002", "010", "011", "012", "020", "021", "022", "100",
+        "101", "102", "110", "111", "112", "120", "121", "122", "200", "201",
+        "202", "210", "211", "212", "220", "221", "222"
+    ]
+    caracters_base = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    f = open("./bwa/result.txt", "w")
+    for combi in combinaisons:
+        for offset in range(len(caracters_base)):
+            alphabet = caracters_base[offset:] + caracters_base[:offset]
+            transduc = build_alpha(alphabet, alpha_lapin)
+
+            f.write(f"combi={combi}\n")
+            f.write(f"{transduc}\n")
+            for i in range(len(message_mots) // 3):
+                code = ""
+                for j in range(3):
+                    mot = message_mots[i * 3 + j]
+                    code += str(combinaisons[combi][mot])
+
+                if code in transduc:
+                    f.write(transduc[code])
+            f.write("\n")
+
+    f.close()
+    print("Phase 1 terminée !")
+
+    # écrire STOP en BWA
+    print("STOP en BWA =")
+    print(build_bwa_word("STOP", caracters_base, alpha_lapin, combinaisons[6]))
 
 
 if __name__ == "__main__":
-    sw_vi_sur_la_lune_d_endor()
+    bwa()
